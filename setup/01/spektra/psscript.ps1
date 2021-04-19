@@ -75,11 +75,11 @@ Function DisableServerMgrNetworkPopup
     }
  
  #Install edge browser
- Function InstallEdgeChromium
+Function InstallEdgeChromium
     {
         #Download and Install edge
         $WebClient = New-Object System.Net.WebClient
-        $WebClient.DownloadFile("http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6d88cf6b-a578-468f-9ef9-2fea92f7e733/MicrosoftEdgeEnterpriseX64.msi","C:\Packages\MicrosoftEdgeBetaEnterpriseX64.msi")
+        $WebClient.DownloadFile("https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/59c478d3-513a-4060-837b-01ad385d6aaa/MicrosoftEdgeEnterpriseX86.msi","C:\Packages\MicrosoftEdgeBetaEnterpriseX64.msi")
         sleep 5
         
 	    Start-Process msiexec.exe -Wait '/I C:\Packages\MicrosoftEdgeBetaEnterpriseX64.msi /qn' -Verbose 
@@ -214,7 +214,7 @@ $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName 
 . C:\LabFiles\AzureCreds.ps1
 $deploymentId = $deploymentID
 
-$url = "https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/01/spektra/armdeploy.parameters.json"
+$url = "https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/01/spektra/armdeploy.parameters.post.json"
 $output = "c:\LabFiles\parameters.json";
 $wclient = New-Object System.Net.WebClient;
 $wclient.CachePolicy = new-object System.Net.Cache.RequestCachePolicy([System.Net.Cache.RequestCacheLevel]::NoCacheNoStore);
