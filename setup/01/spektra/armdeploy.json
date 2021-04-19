@@ -71,8 +71,7 @@
     "sparkVersion": "2.4",
     "keyVaultName": "[concat('asagakeyvault', parameters('uniqueSuffix'))]",
     "location": "[resourceGroup().location]",
-    "uniqueSuffix": "[resourceGroup().tags['DeploymentId']]",
-     "clusterName": "[concat('asagadataexpl', variables('uniqueSuffix'))]"
+     "clusterName": "[concat('asagadataexpl', parameters('uniqueSuffix'))]"
   },
   "resources": [
     {
