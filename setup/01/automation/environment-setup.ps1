@@ -20,7 +20,7 @@ if($IsCloudLabs){
         
         Connect-AzAccount -Credential $cred | Out-Null
 
-        $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*-L400*" }).ResourceGroupName
+        $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "**DP203-M1**" }).ResourceGroupName
 
         if ($resourceGroupName.Count -gt 1)
         {
@@ -60,7 +60,9 @@ if($IsCloudLabs){
                 Select-AzSubscription -SubscriptionName $selectedSubName
         }
 
-        $resourceGroupName = Read-Host "Enter the resource group name";
+        #$resourceGroupName = Read-Host "Enter the resource group name";
+        $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "**DP203-M1**" }).ResourceGroupName
+
         
         $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
         
@@ -78,7 +80,7 @@ if($IsCloudLabs){
 
 Write-Information "Using $resourceGroupName";
 
-$uniqueId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
+$uniqueId =  $deploymentID
 
 # test for empty String or null incase adding DeploytmentId step was missed
 if (($uniqueId -eq $null) -or ($uniqueId -eq ""))
