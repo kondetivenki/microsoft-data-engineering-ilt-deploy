@@ -39,10 +39,29 @@ function InstallAzureCli()
   Write-Host "Installing Azure CLI." -ForegroundColor Green -Verbose
 
   #install azure cli
-  Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi -usebasicparsing; 
-  Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; 
-  rm .\AzureCLI.msi
+  Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile C:\AzureCLI.msi -usebasicparsing; 
+  Start-Process msiexec.exe -Wait -ArgumentList '/I C:\AzureCLI.msi /quiet'; 
+  rm C:\AzureCLI.msi
 }
+
+ #Install edge browser
+ Function InstallEdgeChromium
+    {
+        #Download and Install edge
+        $WebClient = New-Object System.Net.WebClient
+        $WebClient.DownloadFile("http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6d88cf6b-a578-468f-9ef9-2fea92f7e733/MicrosoftEdgeEnterpriseX64.msi","C:\Packages\MicrosoftEdgeBetaEnterpriseX64.msi")
+        sleep 5
+        
+	    Start-Process msiexec.exe -Wait '/I C:\Packages\MicrosoftEdgeBetaEnterpriseX64.msi /qn' -Verbose 
+        sleep 5
+        $WshShell = New-Object -comObject WScript.Shell
+        $Shortcut = $WshShell.CreateShortcut("C:\Users\Public\Desktop\Azure Portal.lnk")
+        $Shortcut.TargetPath = """C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"""
+        $argA = """https://portal.azure.com"""
+        $Shortcut.Arguments = $argA 
+        $Shortcut.Save()
+
+    }
 
 #Disable-InternetExplorerESC
 function DisableInternetExplorerESC
@@ -101,8 +120,8 @@ function CreateLabFilesDirectory
 function CreateCredFile($azureUsername, $azurePassword, $azureTenantID, $azureSubscriptionID, $deploymentId)
 {
   $WebClient = New-Object System.Net.WebClient
-  $WebClient.DownloadFile("https://github.com/ctesta-oneillmsft/asa-vtd/blob/master/artifacts/environment-setup/spektra/AzureCreds.txt","C:\LabFiles\AzureCreds.txt")
-  $WebClient.DownloadFile("https://github.com/ctesta-oneillmsft/asa-vtd/blob/master/artifacts/environment-setup/spektra/AzureCreds.ps1","C:\LabFiles\AzureCreds.ps1")
+  $WebClient.DownloadFile("https://github.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/blob/main/setup/04/artifacts/environment-setup/spektra/AzureCreds.txt","C:\LabFiles\AzureCreds.txt")
+  $WebClient.DownloadFile("https://github.com/solliancenet/microsoft-data-engineering-ilt-deploy/blob/main/setup/04/artifacts/environment-setup/spektra/AzureCreds.ps1","C:\LabFiles\AzureCreds.ps1")
 
   (Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "ClientIdValue", ""} | Set-Content -Path "C:\LabFiles\AzureCreds.ps1"
   (Get-Content -Path "C:\LabFiles\AzureCreds.txt") | ForEach-Object {$_ -Replace "AzureUserNameValue", "$azureUsername"} | Set-Content -Path "C:\LabFiles\AzureCreds.txt"
@@ -140,6 +159,8 @@ InstallAzPowerShellModule
 InstallGit
         
 InstallAzureCli
+
+InstallEdgeChromium
 
 Uninstall-AzureRm -ea SilentlyContinue
 
