@@ -19,9 +19,29 @@ if($subs.GetType().IsArray -and $subs.length -gt 1){
     Select-AzSubscription -SubscriptionName $selectedSubName
 }
 
-$resourceGroupName = Read-Host "Enter the resource group name";
+#$resourceGroupName = Read-Host "Enter the resource group name";
 
-$userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+. C:\LabFiles\AzureCreds.ps1
+
+$userName = $AzureUserName
+$password = $AzurePassword
+
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
+Connect-AzAccount -Credential $cred | Out-Null
+
+#$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*Synapse-Analytics-GA*" }).ResourceGroupName
+$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*DP203-M1*" }).ResourceGroupName
+
+#$userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+
+. C:\LabFiles\AzureCreds.ps1
+
+$userName = $AzureUserName
+$password = $AzurePassword
+
+az login --username "$userName" --password "$password"
+
 
 $artifactsPath = "..\..\"
 $reportsPath = "..\reports"
@@ -35,7 +55,7 @@ $sqlScriptsPath = "..\sql"
 Write-Information "Using $resourceGroupName";
 
 $resourceGroup = Get-AzResourceGroup -Name $resourceGroupName
-$uniqueId =  $resourceGroup.Tags["DeploymentId"]
+$uniqueId =  $deploymentID
 
 # test for empty String or null incase adding DeploytmentId step was missed
 if (($uniqueId -eq $null) -or ($uniqueId -eq ""))
@@ -49,6 +69,8 @@ if (($uniqueId -eq $null) -or ($uniqueId -eq ""))
 }
 
 $location = $resourceGroup.Location
+. C:\LabFiles\AzureCreds.ps1
+$uniqueId = $deploymentID
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
 $global:logindomain = (Get-AzContext).Tenant.Id;
