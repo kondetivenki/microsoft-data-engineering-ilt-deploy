@@ -65,6 +65,13 @@ function EnableIEFileDownload
   Set-ItemProperty -Path $HKCU -Name "1604" -Value 0 -ErrorAction SilentlyContinue -Verbose
 }
 
+function DisableServerMgrNetworkPopup
+{
+  cd HKLM:\
+  New-Item -Path HKLM:\System\CurrentControlSet\Control\Network -Name NewNetworkWindowOff -Force 
+  Get-ScheduledTask -TaskName ServerManager | Disable-ScheduledTask -Verbose
+}
+    
 #Create InstallAzPowerShellModule
 function InstallAzPowerShellModule
 {
@@ -124,6 +131,8 @@ Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -
 DisableInternetExplorerESC
 
 EnableIEFileDownload
+
+DisableServerMgrNetworkPopup
 
 InstallAzPowerShellModule
 #InstallAzPowerShellModuleMSI
