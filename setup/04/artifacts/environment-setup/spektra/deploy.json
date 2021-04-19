@@ -193,7 +193,7 @@
               "autoUpgradeMinorVersion": true,
               "settings": {
                 "fileUris": [
-                  "https://github.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/blob/main/setup/04/artifacts/environment-setup/spektra/post-install-script02.ps1"
+                  "https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/04/artifacts/environment-setup/spektra/post-install-script02.ps1"
                 ]
               },
               "protectedSettings": {
