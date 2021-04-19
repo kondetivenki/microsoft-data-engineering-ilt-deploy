@@ -193,11 +193,11 @@
               "autoUpgradeMinorVersion": true,
               "settings": {
                 "fileUris": [
-                  "https://github.com/ctesta-oneillmsft/asa-vtd/blob/master/artifacts/environment-setup/spektra/post-install-script01.ps1"
+                  "https://github.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/blob/main/setup/04/artifacts/environment-setup/spektra/post-install-script02.ps1"
                 ]
               },
               "protectedSettings": {
-                "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File post-install-script01.ps1', variables('postInstallParameters'))]"
+                "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File post-install-script02.ps1', variables('postInstallParameters'))]"
               }
             }
           }
