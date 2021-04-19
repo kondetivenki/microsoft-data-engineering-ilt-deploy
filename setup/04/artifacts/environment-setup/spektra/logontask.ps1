@@ -1,3 +1,4 @@
+Set-ExecutionPolicy -ExecutionPolicy bypass -Force
 Start-Transcript -Path C:\WindowsAzure\Logs\logontasklogs.txt -Append
 
 #Install power Bi desktop
