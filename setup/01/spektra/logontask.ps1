@@ -10,5 +10,9 @@ Cd 'C:\LabFiles\asa\hands-on-labs\setup\automation'
 sleep 5
 ./lab-02-setup.ps1
 
+sleep 2
+./powerbi-setup.ps1
+
+
 Unregister-ScheduledTask -TaskName "Setup" -Confirm:$false
 Stop-Transcript
