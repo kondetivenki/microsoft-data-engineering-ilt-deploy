@@ -1700,6 +1700,78 @@ Function Generate-CosmosDbMasterKeyAuthorizationSignature {
     [System.Web.HttpUtility]::UrlEncode("type=$keyType&ver=$tokenVersion&sig=$signature")
 }
 
+function Create-PowerBILinkedService {
+    
+    param(
+    [parameter(Mandatory=$true)]
+    [String]
+    $TemplatesPath,
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $WorkspaceName,
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $Name,
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $WorkspaceId
+    )
+
+    $powerBITemplate = Get-Content -Path "$($TemplatesPath)/powerbi_linked_service.json"
+    $powerBI = $powerBITemplate.Replace("#LINKED_SERVICE_NAME#", $Name).Replace("#POWERBI_WORKSPACE_ID#", $WorkspaceId)
+    $uri = "https://$($WorkspaceName).dev.azuresynapse.net/linkedservices/$($Name)?api-version=2019-06-01-preview"
+
+    Ensure-ValidTokens
+    $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $powerBI -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ 
+    return $result
+}
+function Get-PowerBIWorkspaceId($name)
+{
+    $url = "https://api.powerbi.com/v1.0/myorg/groups?`$filter=tolower%28name%29%20eq%20%27$name%27&$top=100";
+    $result = Invoke-RestMethod  -Uri $url -Method GET -Headers @{ Authorization="Bearer $global:powerbitoken" };
+    return $result.value[0].id;
+}
+function New-PowerBIWS($name)
+{
+    $body = "{`"name`": `"$name`"}";
+    $url = "https://api.powerbi.com/v1.0/myorg/groups";
+    $result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization="Bearer $global:powerbitoken" };
+    return $result.id
+}
+
+function Get-PowerBIWorkspace($name)
+{
+    $url = "https://api.powerbi.com/v1.0/myorg/groups";
+    $result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
+    $homeCluster = $result.Headers["home-cluster-uri"]
+
+    foreach($g in $result.value)
+    {
+        if ($g.Name -eq $name)
+        {
+            return $g;
+        }
+    }
+    
+    #$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
+}
+function Add-PowerBIWorkspaceUser($wsId, $spId, $right, $type)
+{
+    #add PowerBI App to workspace as an admin to group
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
+    $post = "{
+        `"identifier`":`"$($spId)`",
+        `"groupUserAccessRight`":`"$right`",
+        `"principalType`":`"$type`"
+        }";
+         $result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
+
+}
+
 Export-ModuleMember -Function List-StorageAccountKeys
 Export-ModuleMember -Function List-CosmosDBKeys
 Export-ModuleMember -Function Create-KeyVaultLinkedService
@@ -1745,3 +1817,8 @@ Export-ModuleMember -Function Check-HttpRedirect
 Export-ModuleMember -Function GetCSRF
 Export-ModuleMember -Function AutoPauseAll
 Export-ModuleMember -Function Set-SqlAdministrator
+Export-ModuleMember -Function Create-PowerBILinkedService
+Export-ModuleMember -Function Get-PowerBIWorkspaceId
+Export-ModuleMember -Function Get-PowerBIWorkspace
+Export-ModuleMember -Function New-PowerBIWS
+Export-ModuleMember -Function Add-PowerBIWorkspaceUser
