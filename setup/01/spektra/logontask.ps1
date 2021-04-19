@@ -7,5 +7,8 @@ Cd 'C:\LabFiles\asa\hands-on-labs\setup\automation'
 
 ./environment-setup.ps1
 
+sleep 5
+./lab-02-setup.ps1
+
 Unregister-ScheduledTask -TaskName "Setup" -Confirm:$false
 Stop-Transcript
