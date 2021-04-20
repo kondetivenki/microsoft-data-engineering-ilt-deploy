@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "sqlAdministratorLoginPassword": {
-        "value": "GET-AZUSER-PASSWORD"
+        "value": "password.1!!"
       },
       "uniqueSuffix": {
         "value": "GET-DEPLOYMENT-ID"
