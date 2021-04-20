@@ -435,6 +435,13 @@ foreach ($dataset in $loadingDatasets.Keys) {
 
 Write-Information "Preparing environment for labs"
 
+. C:\LabFiles\AzureCreds.ps1
+
+$userName = $AzureUserName
+$password = $AzurePassword
+
+az login --username "$userName" --password "$password"
+
 #$app = (az ad sp create-for-rbac -n "Azure Synapse Analytics GA Labs $($uniqueId)" --skip-assignment) | ConvertFrom-Json
 
 $app = (az ad sp create-for-rbac -n "Azure Synapse Analytics GA Labs" --skip-assignment) | ConvertFrom-Json
