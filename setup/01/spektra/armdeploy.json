@@ -78,12 +78,11 @@
     "sparkAutoPauseDelayInMinutes": "15",
     "sparkVersion": "2.4",
     "keyVaultName": "[concat('asagakeyvault', parameters('uniqueSuffix'))]",
-    "location": "[resourceGroup().location]",
     "clusterName": "[concat('asagadataexpl', parameters('uniqueSuffix'))]",
     "resourceNamePrefix": "DP203-M1",
     "eventHubNamespaceName": "[concat('databricksdemoeventhubs', parameters('uniqueSuffix'))]",
     "eventHubName": "databricks-demo-eventhub",
-    "dbworkspaceName": "[parameters('uniqueSuffix')]",
+    "dbworkspaceName": "[parameters('uniqueSuffix')]"
   },
   "resources": [
     {
