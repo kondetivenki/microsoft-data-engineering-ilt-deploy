@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "vmAdminUsername": {
-        "value": "wsuser"
+        "value": "labuser"
       },
       "vmAdminPassword": {
         "value": "Password.1!!"
