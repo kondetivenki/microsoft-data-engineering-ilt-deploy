@@ -9,7 +9,6 @@
     ]
   },
   {
-  {
     "ResourceType": "Microsoft.Synapse/workspaces/sqlPools",
     "Parameter": [
       {
