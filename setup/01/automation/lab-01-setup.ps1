@@ -35,6 +35,12 @@ $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName 
 
 $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
 
+        $ropcBodyCore = "client_id=$($clientId)&username=$($userName)&password=$($password)&grant_type=password"
+        $global:ropcBodySynapse = "$($ropcBodyCore)&scope=https://dev.azuresynapse.net/.default"
+        $global:ropcBodyManagement = "$($ropcBodyCore)&scope=https://management.azure.com/.default"
+        $global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
+        $global:ropcBodyPowerBI = "$($ropcBodyCore)&scope=https://analysis.windows.net/powerbi/api/.default"
+        
 $artifactsPath = "..\..\"
 $reportsPath = "..\reports"
 $templatesPath = "..\templates"
