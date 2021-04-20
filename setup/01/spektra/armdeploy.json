@@ -428,8 +428,8 @@
         "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespaceName'))]"
       ],
       "properties": {
-        "messageRetentionInDays": 7,
-        "partitionCount": 1
+        "messageRetentionInDays": 1,
+        "partitionCount": 2
       }
     }
   ],
