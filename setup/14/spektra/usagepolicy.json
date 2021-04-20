@@ -1,0 +1,21 @@
+[
+  {
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "Parameter": [
+      {
+        "Name": "max-cpu-cores",
+        "Value": "04"
+      }
+    ]
+  },
+  {
+  {
+    "ResourceType": "Microsoft.Synapse/workspaces/sqlPools",
+    "Parameter": [
+      {
+        "Name": "max-DW",
+        "Value": "1000"
+      }
+    ]
+  }
+]
