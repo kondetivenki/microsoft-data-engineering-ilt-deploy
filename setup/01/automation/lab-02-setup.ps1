@@ -43,10 +43,10 @@ $password = $AzurePassword
 az login --username "$userName" --password "$password"
 
 $ropcBodyCore = "client_id=$($clientId)&username=$($userName)&password=$($password)&grant_type=password"
-        $global:ropcBodySynapse = "$($ropcBodyCore)&scope=https://dev.azuresynapse.net/.default"
-        $global:ropcBodyManagement = "$($ropcBodyCore)&scope=https://management.azure.com/.default"
-        $global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
-        $global:ropcBodyPowerBI = "$($ropcBodyCore)&scope=https://analysis.windows.net/powerbi/api/.default"
+$global:ropcBodySynapse = "$($ropcBodyCore)&scope=https://dev.azuresynapse.net/.default"
+$global:ropcBodyManagement = "$($ropcBodyCore)&scope=https://management.azure.com/.default"
+$global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
+$global:ropcBodyPowerBI = "$($ropcBodyCore)&scope=https://analysis.windows.net/powerbi/api/.default"
         
 $artifactsPath = "..\..\"
 $reportsPath = "..\reports"
