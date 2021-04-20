@@ -48,8 +48,8 @@
     }    
   },
   "variables": {
-    "managedResourceGroupName": "[concat('databricks-rg-', variables('resourceNamePrefix'), '-', parameters('uniqueSuffix'))]"
-     "location": "[resourceGroup().location]",
+    "managedResourceGroupName": "[concat('databricks-rg-', variables('resourceNamePrefix'), '-', parameters('uniqueSuffix'))]",
+    "location": "[resourceGroup().location]",
     "sqlAdministratorLogin": "asaga.sql.admin",
     "workspaceName": "[concat('asagaworkspace', parameters('uniqueSuffix'))]",
     "adlsStorageAccountName": "[concat('asagadatalake', parameters('uniqueSuffix'))]",
