@@ -537,10 +537,10 @@ foreach ($pipeline in $workloadPipelines.Keys) {
 Write-Information "Create SQL scripts"
 
 $sqlScripts = [ordered]@{
-        "Lab 05 - Exercise 3 - Column Level Security" = "$artifactsPath\environment-setup\sql"
-        "Lab 05 - Exercise 3 - Dynamic Data Masking" = "$artifactsPath\environment-setup\sql"
-        "Lab 05 - Exercise 3 - Row Level Security" = "$artifactsPath\environment-setup\sql"
-        "Activity 03 - Data Warehouse Optimization" = "$artifactsPath\environment-setup\sql"
+        "Lab 05 - Exercise 3 - Column Level Security" = "$artifactsPath\environment-setup\sql\workspace-artifacts"
+        "Lab 05 - Exercise 3 - Dynamic Data Masking" = "$artifactsPath\environment-setup\sql\workspace-artifacts"
+        "Lab 05 - Exercise 3 - Row Level Security" = "$artifactsPath\environment-setup\sql\workspace-artifacts"
+        "Activity 03 - Data Warehouse Optimization" = "$artifactsPath\environment-setup\sql\workspace-artifacts"
 }
 
 foreach ($sqlScriptName in $sqlScripts.Keys) {
