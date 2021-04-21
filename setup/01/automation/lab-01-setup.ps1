@@ -25,6 +25,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1){
 
 $userName = $AzureUserName
 $password = $AzurePassword
+$clientId = $TokenGeneratorClientId
 
 $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
