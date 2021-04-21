@@ -2,6 +2,8 @@ $InformationPreference = "Continue"
 Cd 'C:\LabFiles\asa\setup\01\automation'
 
 Remove-Module solliance-synapse-automation
+Import-Module "..\solliance-synapse-automation"
+
 Import-Module -Name MicrosoftPowerBIMgmt
 . C:\LabFiles\AzureCreds.ps1
  $depId = $deploymentID
