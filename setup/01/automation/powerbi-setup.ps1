@@ -7,6 +7,8 @@ Import-Module -Name MicrosoftPowerBIMgmt
  $depId = $deploymentID
 $userName = $AzureUserName
 $password = $AzurePassword
+$clientId = $TokenGeneratorClientId
+
 $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
 Connect-PowerBIServiceAccount -Credential $cred | Out-Null
