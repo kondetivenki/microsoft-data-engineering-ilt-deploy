@@ -1,0 +1,18 @@
+[
+  {
+    "Name": "Module 1 - Explore compute and storage options for data engineering workloads",
+    "Language": "English",
+    "BaseURL": "https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/alwinvw23/CloudLabs/master/LabIntro.md",
+        "Order": 1
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/DP-203T00-Data-Engineering-on-Microsoft-Azure/master/Instructions/Labs/01/README.md",
+        "Order": 2
+      }
+
+    ]
+  }
+]
