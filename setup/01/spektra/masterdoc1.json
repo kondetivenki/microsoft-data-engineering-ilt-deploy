@@ -11,6 +11,14 @@
       {
         "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/DP-203T00-Data-Engineering-on-Microsoft-Azure/master/Instructions/Labs/01/README.md",
         "Order": 2
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/DP-203T00-Data-Engineering-on-Microsoft-Azure/master/Instructions/Labs/06/README.md",
+        "Order": 3
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/DP-203T00-Data-Engineering-on-Microsoft-Azure/master/Instructions/Labs/15/README.md",
+        "Order": 4
       }
 
     ]
