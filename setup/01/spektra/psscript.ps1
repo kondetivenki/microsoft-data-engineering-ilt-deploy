@@ -165,6 +165,8 @@ InstallAzureCli
 
 Uninstall-AzureRm -ea SilentlyContinue
 
+Install-Module -Name newtonsoft.json -AllowClobber -Force
+
 Install-Module -Name MicrosoftPowerBIMgmt -Force
 Install-Module -Name MicrosoftPowerBIMgmt.Admin -Force
 Install-Module -Name MicrosoftPowerBIMgmt.Profile -Force
