@@ -25,6 +25,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1){
 
 $userName = $AzureUserName
 $password = $AzurePassword
+$clientId = $TokenGeneratorClientId
 
 $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
@@ -114,8 +115,8 @@ Invoke-RestMethod -Uri https://$kustoClusterName.$($location).kusto.windows.net/
 
 # Set the Azure Synapse Analytics GA Labs service principal as admin on the Kusto database
 
-Write-Information "Making the service principal 'Azure Synapse Analytics GA Labs $($uniqueId)' an admin on the Kusto database"
-$app = ((az ad sp list --display-name "Azure Synapse Analytics GA Labs $($uniqueId)") | ConvertFrom-Json)[0]
+Write-Information "Making the service principal 'Azure Synapse Analytics GA Labs' an admin on the Kusto database"
+$app = ((az ad sp list --display-name "Azure Synapse Analytics GA Labs") | ConvertFrom-Json)[0]
 $kustoStatement = ".add database ['$($kustoDatabaseName)'] admins ('aadapp=$($app.appId)')"
 $body = "{ db: ""$kustoDatabaseName"", csl: ""$kustoStatement"" }"
 Invoke-RestMethod -Uri https://$kustoClusterName.$($location).kusto.windows.net/v1/rest/mgmt -Method POST -Body $body -Headers @{ Authorization="Bearer $token" } -ContentType "application/json"
