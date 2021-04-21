@@ -45,7 +45,8 @@ Disconnect-PowerBIServiceAccount
   
 sleep 3
        
-       Cd 'C:\LabFiles\asa\hands-on-labs\setup\automation'
+      Cd 'C:\LabFiles\asa\setup\01\automation'
+
        Import-Module "..\solliance-synapse-automation"
          . C:\LabFiles\AzureCreds.ps1
 
