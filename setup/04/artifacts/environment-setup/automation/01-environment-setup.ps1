@@ -82,7 +82,9 @@ if($IsCloudLabs){
 
 Write-Information "Using $resourceGroupName";
 
-$uniqueId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
+#$uniqueId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
+. C:\LabFiles\AzureCreds.ps1
+$uniqueId = $deploymentID
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
 $global:logindomain = (Get-AzContext).Tenant.Id;
