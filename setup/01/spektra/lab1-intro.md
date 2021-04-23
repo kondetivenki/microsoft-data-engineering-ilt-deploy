@@ -7,8 +7,6 @@
  - [Module 15](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/15)
  - [Module 17](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/17)
 
-
-
 ## Log-in to the Azure portal
 
 1.  Open a Browser and sign in to the Azure Portal (<https://portal.azure.com/>) with the following credentials:
