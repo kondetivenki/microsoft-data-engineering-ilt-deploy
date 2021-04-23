@@ -1,6 +1,6 @@
 ## **Getting Started**
 
-## **Modules Included**
+## Modules Included
 
 - [Module 4](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/01)  
 - [Module 5](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/05)
