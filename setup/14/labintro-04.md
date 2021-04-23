@@ -1,12 +1,5 @@
 ## **Getting Started**
 
-
-## **Modules Included**
-
-
- - [Module 14](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/14)  
-
-
 ## Log-in to the Azure portal
 
 
@@ -26,6 +19,13 @@
 
 
 5. Click on **Next** from the bottom right corner and follow the instructions to perform the lab.
+
+
+## **Modules Included**
+
+In this hands-on lab you will be performing the following module:
+
+ - [Module 14](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/14)  
 
 
 
