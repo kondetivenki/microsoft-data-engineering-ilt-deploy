@@ -38,7 +38,8 @@
       "virtualNetworkName": "labvm-vnet",
       "vmName": "[concat('labvm-',parameters('deploymentId'))]",
       "adlsStorageAccountName": "[concat('asagadatalake', parameters('deploymentId'))]",
-      "location": "[resourceGroup().location]"
+      "location": "[resourceGroup().location]",
+      "sqlAdministratorLoginPassword": "password.1!!"
     },
     "resources": [
       {
@@ -224,6 +225,10 @@
       "LABVM DNS Name": {
         "type": "String",
         "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIpAddressName'))).dnsSettings.fqdn]"
+      },
+      "sqlAdministratorLoginPassword": {
+        "type": "String",
+        "value": "[variables('sqlAdministratorLoginPassword')]"
       }
     }
   }
