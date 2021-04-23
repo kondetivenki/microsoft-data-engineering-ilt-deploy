@@ -1,18 +1,5 @@
 ## **Getting Started**
 
-## Modules Included
-
-- [Module 4](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/01)  
-- [Module 5](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/05)
-- [Module 7](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/07)
-- [Module 8](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/08)
-- [Module 9](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/09)
-- [Module 10](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/10)
-- [Module 11](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/11)
-- [Module 12](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/12)
-- [Module 13](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/13)
-- [Module 16](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/16)
- 
 ## Log-in to the Azure portal
 
 1.  Open a Browser and sign in to the Azure Portal (<https://portal.azure.com/>) with the following credentials:
@@ -27,3 +14,19 @@
 4. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
 
 5. Click on **Next** from the bottom right corner and follow the instructions to perform the lab.
+
+## Modules Included
+
+  In this hands-on lab you will be performing the below modules:
+
+- [Module 4](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/01)  
+- [Module 5](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/05)
+- [Module 7](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/07)
+- [Module 8](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/08)
+- [Module 9](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/09)
+- [Module 10](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/10)
+- [Module 11](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/11)
+- [Module 12](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/12)
+- [Module 13](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/13)
+- [Module 16](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/16)
+ 
