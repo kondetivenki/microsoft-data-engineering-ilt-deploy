@@ -219,6 +219,4 @@ Import-Module Az.CosmosDB
 
 New-AzRoleAssignment -ResourceGroupName $resourceGroupName -ErrorAction Ignore -ObjectId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e" -RoleDefinitionName "Owner"
 
-Invoke-WebRequest -Uri "https://solliancepublicdata.blob.core.windows.net/notebooks/Lab%202%20-%20Explore%20with%20Spark.ipynb" -OutFile "C:\LabFiles\Lab 2 - Explore with Spark.ipynb"
-
 Stop-Transcript
