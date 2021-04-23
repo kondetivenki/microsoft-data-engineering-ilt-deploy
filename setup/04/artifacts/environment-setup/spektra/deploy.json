@@ -38,6 +38,7 @@
       "virtualNetworkName": "labvm-vnet",
       "vmName": "[concat('labvm-',parameters('deploymentId'))]",
       "adlsStorageAccountName": "[concat('asadatalake', parameters('deploymentId'))]",
+      "sqlAdministratorLoginPassword": "password.1!!",
       "location": "[resourceGroup().location]"
     },
     "resources": [
@@ -212,6 +213,10 @@
       "Storage Account Name": {
         "type": "String",
         "value": "[variables('adlsStorageAccountName')]"
+      },
+      "sqlAdministratorLoginPassword": {
+        "type": "String",
+        "value": "[variables('sqlAdministratorLoginPassword')]"
       },
       "LABVM Admin Username": {
         "type": "String",
