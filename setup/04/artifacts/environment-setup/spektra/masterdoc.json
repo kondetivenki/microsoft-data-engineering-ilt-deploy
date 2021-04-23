@@ -1,11 +1,11 @@
 [
   {
-    "Name": "DP 203: Data Engineering on Microsoft Azure",
+    "Name": "DP 203:Lab 3",
     "Language": "English",
     "BaseURL": "https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure",
     "Files": [
       {
-        "RawFilePath": "https://raw.githubusercontent.com/alwinvw23/CloudLabs/master/LabIntro.md",
+        "RawFilePath": "https://github.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/blob/main/setup/04/artifacts/environment-setup/spektra/lab3-intro.md",
         "Order": 1
       },
       {
