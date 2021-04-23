@@ -28,6 +28,11 @@
 5. Click on **Next** from the bottom right corner and follow the instructions to perform the lab.
 
 
+## **Modules Included**
+
+    In this hands on lab you will perform the following modules:
+
+ - [Module 2](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/02)  
 
 
 
