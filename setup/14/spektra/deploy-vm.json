@@ -206,7 +206,7 @@
       }
     ],
     "outputs": {
-      "SUFFIX": {
+      "UniqueId": {
         "type": "String",
         "value": "[ parameters('deploymentId')]"
       },
