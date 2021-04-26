@@ -15,7 +15,7 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 Connect-PowerBIServiceAccount -Credential $cred | Out-Null
 
 #Create PowerBI Workspace
-$powerBIws= "Synapse Analytics GA Labs" 
+$powerBIws= "Synapse Analytics GA Labs- $depId" 
 New-PowerBIWorkspace -Name $powerBIws
 $ws= Get-PowerBIWorkspace -Name $powerBIws -ErrorAction SilentlyContinue;
 
