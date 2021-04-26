@@ -5,7 +5,7 @@
     "BaseURL": "https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure",
     "Files": [
       {
-        "RawFilePath": "https://github.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/blob/main/setup/04/artifacts/environment-setup/spektra/lab3-intro.md",
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/04/artifacts/environment-setup/spektra/lab3-intro.md",
         "Order": 1
       },
       {
