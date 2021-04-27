@@ -5,6 +5,7 @@
     "Description":  "Spektra Training Custom Role.",
     "Actions":  [
                     "microsoft.alertsmanagement/smartDetectorAlertRules/*",
+                    "Microsoft.Authorization/roleAssignments/write",
                     "Microsoft.Authorization/*/read",
                     "Microsoft.CognitiveServices/accounts/*",
                     "Microsoft.ContainerRegistry/registries/*",
@@ -21,6 +22,7 @@
                     "Microsoft.Synapse/workspaces/*",
                     "Microsoft.Synapse/workspaces/bigDataPools/*",
                     "Microsoft.Synapse/workspaces/sqlPools/*"
+                    
                 ],
     "NotActions":  [
 
