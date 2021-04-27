@@ -11,7 +11,7 @@
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Storage/storageAccounts/*",
     "Microsoft.Synapse/workspaces/*",
-    "Microsoft.EventHub/namespaces/*",
+    "Microsoft.Sql/servers/*",
     "Microsoft.KeyVault/vaults/*",
     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/*"
   ],
