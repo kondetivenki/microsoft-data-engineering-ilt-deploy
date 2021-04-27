@@ -12,7 +12,7 @@
     "Microsoft.Storage/storageAccounts/*",
     "Microsoft.Synapse/workspaces/*",
     "Microsoft.EventHub/namespaces/*",
-    "Microsoft.StreamAnalytics/streamingjobs/*
+    "Microsoft.StreamAnalytics/streamingjobs/*"
   ],
   "NotActions": [
   ]
