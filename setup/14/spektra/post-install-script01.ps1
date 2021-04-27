@@ -49,7 +49,7 @@ function InstallAzureCli()
     {
         #Download and Install edge
         $WebClient = New-Object System.Net.WebClient
-        $WebClient.DownloadFile("http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6d88cf6b-a578-468f-9ef9-2fea92f7e733/MicrosoftEdgeEnterpriseX64.msi","C:\Packages\MicrosoftEdgeBetaEnterpriseX64.msi")
+        $WebClient.DownloadFile("https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/59c478d3-513a-4060-837b-01ad385d6aaa/MicrosoftEdgeEnterpriseX86.msi","C:\Packages\MicrosoftEdgeBetaEnterpriseX64.msi")
         sleep 5
         
 	    Start-Process msiexec.exe -Wait '/I C:\Packages\MicrosoftEdgeBetaEnterpriseX64.msi /qn' -Verbose 
@@ -62,6 +62,7 @@ function InstallAzureCli()
         $Shortcut.Save()
 
     }
+
 
 #Disable-InternetExplorerESC
 function DisableInternetExplorerESC
