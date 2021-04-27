@@ -1,0 +1,131 @@
+{
+	 "if": {
+	    "anyOf": [
+		 {
+			"not": {
+			  "anyOf": [
+                    {
+				    "field": "type",
+				    "like": "microsoft.alertsmanagement/smartDetectorAlertRules/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.CognitiveServices/accounts/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.ContainerRegistry/registries/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Databricks/workspaces/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.EventHub/namespaces/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "microsoft.insights/actiongroups/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Insights/components/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.KeyVault/vaults/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Kusto/clusters/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.MachineLearningServices/workspaces/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Storage/storageAccounts/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Synapse/workspaces/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Synapse/workspaces/bigDataPools/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Synapse/workspaces/sqlPools/*"
+				    },
+                    {
+				    "field": "type",
+				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.CognitiveServices/accounts", "Microsoft.ContainerRegistry/registries", "Microsoft.Databricks/workspaces", "Microsoft.EventHub/namespaces", "microsoft.insights/actiongroups", "Microsoft.Insights/components", "Microsoft.KeyVault/vaults", "Microsoft.Kusto/clusters", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Storage/storageAccounts", "Microsoft.Synapse/workspaces", "Microsoft.Synapse/workspaces/bigDataPools", "Microsoft.Synapse/workspaces/sqlPools"]
+				    }
+                ]
+			}
+		 },
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.ContainerRegistry/registries"
+			},
+			{
+            "field": "Microsoft.ContainerRegistry/registries/sku.name",
+            "notIn": ["Standard"]
+            }
+			]
+		  },
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.EventHub/namespaces"
+			},
+			{
+            "field": "Microsoft.EventHub/namespaces/sku.name",
+            "notIn": ["Basic"]
+            }
+			]
+		  },
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.KeyVault/vaults"
+			},
+			{
+            "field": "Microsoft.KeyVault/vaults/sku.name",
+            "notIn": ["Standard"]
+            }
+			]
+		  },
+            {
+			"allOf": [
+			  {
+				"source": "action",
+				"equals": "Microsoft.Storage/storageAccounts/write"
+			  },
+			  {
+				"field": "type",
+				"equals": "Microsoft.Storage/storageAccounts"
+			  },
+			  {
+				"not": 
+				  {
+					"field": "Microsoft.Storage/storageAccounts/sku.name",
+					"in": ["StandardLRS", "StandardRAGRS"]
+				  }
+			   }
+			]
+		  },
+
+	  ]
+	},
+	"then": {
+	  "effect": "deny"
+	}
+}
