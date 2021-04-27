@@ -1,0 +1,20 @@
+{
+  "Name": "DP 203 Module 02- RBAC",
+  "Id": null,
+  "IsCustom": true,
+  "Description": "Spektra Training Custom Role.",
+  "Actions": [
+    "Microsoft.Authorization/*/read",
+    "Microsoft.Authorization/roleAssignments/write",
+    "Microsoft.Resources/deployments/*",
+    "Microsoft.Resources/deployments/validate/action",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Storage/storageAccounts/*",
+    "Microsoft.Synapse/workspaces/*",
+    "Microsoft.EventHub/namespaces/*",
+    "Microsoft.KeyVault/vaults/*",
+    "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/*"
+  ],
+  "NotActions": [
+  ]
+}
