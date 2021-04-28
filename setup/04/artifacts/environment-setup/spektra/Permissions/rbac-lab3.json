@@ -15,7 +15,7 @@
        "Microsoft.insights/actiongroups/*",
        "Microsoft.insights/components/*",
        "Microsoft.DocumentDB/databaseAccounts/*",
-        "Microsoft.Resources/tags/write"
+       "Microsoft.Resources/tags/*"
     ],
     "NotActions": [
     ]
