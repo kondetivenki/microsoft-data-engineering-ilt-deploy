@@ -62,6 +62,18 @@
         ]
       },
       {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.KeyVault/vaults"
+			},
+			{
+            "field": "Microsoft.KeyVault/vaults/sku.name",
+            "notIn": ["Standard"]
+      }
+			]
+		  },
+      {
         "allOf": [
           {
             "source": "action",
