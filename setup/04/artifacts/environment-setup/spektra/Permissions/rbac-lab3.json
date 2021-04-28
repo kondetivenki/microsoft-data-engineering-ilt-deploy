@@ -14,7 +14,8 @@
        "Microsoft.KeyVault/vaults/*",
        "Microsoft.insights/actiongroups/*",
        "Microsoft.insights/components/*",
-      "Microsoft.DocumentDB/databaseAccounts/*"
+       "Microsoft.DocumentDB/databaseAccounts/*",
+        "Microsoft.Resources/tags/write"
     ],
     "NotActions": [
     ]
