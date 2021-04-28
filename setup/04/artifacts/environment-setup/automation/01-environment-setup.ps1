@@ -705,3 +705,17 @@ Update-AzCosmosDBSqlContainer -ResourceGroupName $resourceGroupName `
         -Name $cosmosDbContainer -Throughput 400 `
         -PartitionKeyKind $container.Resource.PartitionKey.Kind `
         -PartitionKeyPath $container.Resource.PartitionKey.Paths
+
+Write-Information "Scale up the $($sqlPoolName) SQL pool to DW200c"
+
+Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action scale -SKU DW200c
+Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
+
+Write-Information "Pausing the $($sqlPoolName) SQL pool"
+
+$result = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
+if ($result.properties.status -eq "Online") {
+Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action pause
+Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Paused
+}
+     
