@@ -442,9 +442,9 @@ $password = $AzurePassword
 
 az login --username "$userName" --password "$password"
 
-#$app = (az ad sp create-for-rbac -n "Azure Synapse Analytics GA Labs $($uniqueId)" --skip-assignment) | ConvertFrom-Json
+$app = (az ad sp create-for-rbac -n "Azure Synapse Analytics GA Labs $($uniqueId)" --skip-assignment) | ConvertFrom-Json
 
-$app = (az ad sp create-for-rbac -n "Azure Synapse Analytics GA Labs" --skip-assignment) | ConvertFrom-Json
+#$app = (az ad sp create-for-rbac -n "Azure Synapse Analytics GA Labs" --skip-assignment) | ConvertFrom-Json
 $pass= $app.password
 $id= $app.appId
 $objid= az ad user show -o tsv --query objectId --id "$AzureUserName"
