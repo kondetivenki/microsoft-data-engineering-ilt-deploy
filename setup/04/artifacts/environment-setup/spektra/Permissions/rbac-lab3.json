@@ -5,7 +5,8 @@
     "Description": "CloudLabs Sample Workshop Custom Role.",
     "Actions": [
       "Microsoft.Authorization/*/read",
-      "Microsoft.Authorization/roleAssignments/write",  
+      "Microsoft.Authorization/roleAssignments/write",
+      "Microsoft.Authorization/roleAssignments/delete",	
       "Microsoft.Resources/deployments/*",
       "Microsoft.Resources/deployments/validate/action",
       "Microsoft.Resources/subscriptions/resourceGroups/read",
