@@ -30,7 +30,7 @@
     "Parameter": [
       {
         "Name": "max-DW",
-        "Value": "400"
+        "Value": "1000"
       }
     ]
   }
