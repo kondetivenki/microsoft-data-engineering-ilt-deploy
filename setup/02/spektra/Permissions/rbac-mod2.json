@@ -4,7 +4,6 @@
   "IsCustom": true,
   "Description": "Spektra Training Custom Role.",
   "Actions": [
-    "Microsoft.Authorization/*/read",
     "Microsoft.Authorization/roleAssignments/write",
     "Microsoft.Resources/deployments/*",
     "Microsoft.Resources/deployments/validate/action",
@@ -16,5 +15,8 @@
     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/*"
   ],
   "NotActions": [
+     "Microsoft.Authorization/policyDefinitions/*",
+     "Microsoft.Authorization/policyAssignments/*",
+     "Microsoft.Authorization/policySetDefinitions/*"
   ]
 }
