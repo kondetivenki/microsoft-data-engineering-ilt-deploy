@@ -19,5 +19,8 @@
        "Microsoft.Resources/tags/*"
     ],
     "NotActions": [
-    ]
+     "Microsoft.Authorization/policyDefinitions/*",
+     "Microsoft.Authorization/policyAssignments/*",
+     "Microsoft.Authorization/policySetDefinitions/*"
+ ]
   }
