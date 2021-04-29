@@ -15,5 +15,8 @@
     "Microsoft.StreamAnalytics/streamingjobs/*"
   ],
   "NotActions": [
+      "Microsoft.Authorization/policyDefinitions/read",
+     "Microsoft.Authorization/policyAssignments/read",
+     "Microsoft.Authorization/policySetDefinitions/read"
   ]
 }
