@@ -18,5 +18,7 @@
      "Microsoft.Authorization/policyDefinitions/read",
      "Microsoft.Authorization/policyAssignments/read",
      "Microsoft.Authorization/policySetDefinitions/read"
+     "Microsoft.Authorization/*",
+     "Microsoft.Authorization/*/read"
   ]
 }
