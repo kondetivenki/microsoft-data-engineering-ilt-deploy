@@ -15,8 +15,8 @@
     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/*"
   ],
   "NotActions": [
-     "Microsoft.Authorization/policyDefinitions/*",
-     "Microsoft.Authorization/policyAssignments/*",
-     "Microsoft.Authorization/policySetDefinitions/*"
+     "Microsoft.Authorization/policyDefinitions/read",
+     "Microsoft.Authorization/policyAssignments/read",
+     "Microsoft.Authorization/policySetDefinitions/read"
   ]
 }
