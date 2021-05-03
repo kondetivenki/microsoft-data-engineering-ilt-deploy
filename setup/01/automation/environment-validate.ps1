@@ -246,7 +246,7 @@ if ($sparkPool -eq $null) {
 }
 
 
- <#$pipelineresult= Query-pipeline -WorkspaceName $workspaceName
+ $pipelineresult= Query-pipeline -WorkspaceName $workspaceName
 
          $ExpectedPipelineName = (
             'Setup - Import sales telemetry data',
@@ -277,13 +277,13 @@ if ($sparkPool -eq $null) {
          $overallStateIsValid = $false
  
     }   
-     elseif (($count -ne 3) -and (pipelinesstatus -eq "Failed")){
+     elseif (($count -ne 3) -and ($pipelinesstatus -eq "Failed")){
          $overallStateIsValid = $false
 
     }
     else{
-       $overallStateIsValid = $true
-    } #>
+       Write-Information "Pipeline runs ok"
+    } 
 
 
 Write-Information "Checking datalake account $($dataLakeAccountName)..."
