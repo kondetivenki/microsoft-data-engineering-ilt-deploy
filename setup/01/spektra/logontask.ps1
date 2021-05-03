@@ -16,10 +16,11 @@ sleep 5
 sleep 5
 ./powerbi-setup.ps1
 
-Unregister-ScheduledTask -TaskName "Setup" -Confirm:$false
-
 cd C:\
 Remove-Item 'C:\LabFiles\asa' -force
+
+Unregister-ScheduledTask -TaskName "Setup" -Confirm:$false
+
 Remove-Item 'C:\LabFiles\logontask.ps1' -force
 
 Stop-Transcript
