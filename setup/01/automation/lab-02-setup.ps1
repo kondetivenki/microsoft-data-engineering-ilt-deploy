@@ -178,3 +178,12 @@ Write-Information "Deleting linked service for Kusto database"
 
 $result = Delete-ASAObject -WorkspaceName $workspaceName -Category "linkedservices" -Name $linkedServiceName
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+
+
+Write-Information "Pausing the $($sqlPoolName) SQL pool"
+
+$result = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
+if ($result.properties.status -eq "Online") {
+Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action pause
+Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Paused
+}
