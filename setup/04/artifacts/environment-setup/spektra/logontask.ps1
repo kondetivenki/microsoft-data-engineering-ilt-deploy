@@ -9,4 +9,8 @@ Cd 'C:\LabFiles\data-engineering-ilt-deployment\setup\04\artifacts\environment-s
 .\01-environment-setup.ps1
 
 Unregister-ScheduledTask -TaskName "Setup" -Confirm:$false
+
+cd C:\
+Remove-Item 'C:\LabFiles\data-engineering-ilt-deployment' -Recurse -force
+
 Stop-Transcript
