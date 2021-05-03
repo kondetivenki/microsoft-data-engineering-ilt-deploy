@@ -26,6 +26,15 @@
     ]
   },
   {
+    "ResourceType": "Microsoft.DocumentDb/databaseAccounts",
+    "Parameter": [
+      {
+        "Name": "max-RU",
+        "Value": "4000"
+      }
+    ]
+  },
+  {
     "ResourceType": "Microsoft.Synapse/workspaces/sqlPools",
     "Parameter": [
       {
