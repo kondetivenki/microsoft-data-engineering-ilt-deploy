@@ -12,7 +12,21 @@ function AutoPauseAllPS()
         }
     }
 }
+function Query-Pipeline {
+    
+    param(
 
+    [parameter(Mandatory=$true)]
+    [String]
+    $WorkspaceName
+)
+
+    $uri = "https://$($WorkspaceName).dev.azuresynapse.net/queryPipelineRuns?api-version=2019-06-01"
+ $result = Invoke-RestMethod  -Uri $uri -Method POST -Headers @{ Authorization="Bearer $synapseToken" }
+    Ensure-ValidTokens
+   
+    return $result
+}
 function AutoPauseAll($subscriptionId)
 {
     #get resource groups...
@@ -1822,3 +1836,4 @@ Export-ModuleMember -Function Get-PowerBIWorkspaceId
 Export-ModuleMember -Function Get-PowerBIWorkspace
 Export-ModuleMember -Function New-PowerBIWS
 Export-ModuleMember -Function Add-PowerBIWorkspaceUser
+Export-ModuleMember -Function Query-Pipeline
