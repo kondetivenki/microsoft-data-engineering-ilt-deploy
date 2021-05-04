@@ -1,8 +1,4 @@
 $InformationPreference = "Continue"
-
-$IsCloudLabs = Test-Path C:\LabFiles\AzureCreds.ps1;
-
-if($IsCloudLabs){
         if(Get-Module -Name solliance-synapse-automation){
                 Remove-Module solliance-synapse-automation
         }
@@ -35,37 +31,7 @@ if($IsCloudLabs){
         $dataflowsPath = ".\artifacts\environment-setup\dataflows"
         $pipelinesPath = ".\artifacts\environment-setup\pipelines"
         $sqlScriptsPath = ".\artifacts\environment-setup\sql"
-} else {
-        if(Get-Module -Name solliance-synapse-automation){
-                Remove-Module solliance-synapse-automation
-        }
-        Import-Module "..\solliance-synapse-automation"
 
-        #Different approach to run automation in Cloud Shell
-        $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
-        if($subs.GetType().IsArray -and $subs.length -gt 1){
-                $subOptions = [System.Collections.ArrayList]::new()
-                for($subIdx=0; $subIdx -lt $subs.length; $subIdx++){
-                        $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($subs[$subIdx])", "Selects the $($subs[$subIdx]) subscription."   
-                        $subOptions.Add($opt)
-                }
-                $selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
-                $selectedSubName = $subs[$selectedSubIdx]
-                Write-Information "Selecting the $selectedSubName subscription"
-                Select-AzSubscription -SubscriptionName $selectedSubName
-        }
-        
-        $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
-        $global:sqlPassword = Read-Host -Prompt "Enter the SQL Administrator password you used in the deployment" -AsSecureString
-        $global:sqlPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringUni([System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($sqlPassword))
-
-        $reportsPath = "..\reports"
-        $templatesPath = "..\templates"
-        $datasetsPath = "..\datasets"
-        $dataflowsPath = "..\dataflows"
-        $pipelinesPath = "..\pipelines"
-        $sqlScriptsPath = "..\sql"
-}
 
 $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*DP203*" -and  $_.ResourceGroupName -notlike "*labrg*" }).ResourceGroupName
 
@@ -181,6 +147,14 @@ foreach ($asaArtifactName in $asaArtifacts.Keys) {
                 Write-Warning "Not found!"
                 $overallStateIsValid = $false
         }
+}
+
+Write-Information "Start the $($sqlPoolName) SQL pool if needed."
+
+$result = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
+if ($result.properties.status -ne "Online") {
+    Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action resume
+    Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
 }
 
 # the $asaArtifacts contains the current status of the workspace
