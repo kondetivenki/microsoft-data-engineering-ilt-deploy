@@ -711,7 +711,19 @@ Write-Information "Scale down the $($sqlPoolName) SQL pool to DW200c"
 Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action scale -SKU DW200c
 Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
 
-<#rite-Information "Pausing the $($sqlPoolName) SQL pool"
+Write-Information "Checking if PBI desktop is installed or not"
+$filetocheck= "C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe"
+
+if(!(Test-Path $filetocheck -PathType leaf))
+{
+ Write-Information "Powerbi is not installed, Installing it" 
+ Start-Process -FilePath "C:\LabFiles\PBIDesktop_x64.exe" -ArgumentList '-quiet','ACCEPT_EULA=1' -Wait
+}
+else{
+Write-Information "Powerbi ok"
+}
+
+<#Write-Information "Pausing the $($sqlPoolName) SQL pool"
 
 $result = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
 if ($result.properties.status -eq "Online") {
