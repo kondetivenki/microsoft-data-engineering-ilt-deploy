@@ -1,4 +1,5 @@
-$InformationPreference = "Continue"
+        $InformationPreference = "Continue"
+        cd 'C:\LabFiles\data-engineering-ilt-deployment\setup\04\artifacts\environment-setup\automation'
         if(Get-Module -Name solliance-synapse-automation){
                 Remove-Module solliance-synapse-automation
         }
