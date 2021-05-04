@@ -180,10 +180,10 @@ $result = Delete-ASAObject -WorkspaceName $workspaceName -Category "linkedservic
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
 
-Write-Information "Pausing the $($sqlPoolName) SQL pool"
+<#Write-Information "Pausing the $($sqlPoolName) SQL pool"
 
 $result = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
 if ($result.properties.status -eq "Online") {
 Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action pause
 Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Paused
-}
+}#>
