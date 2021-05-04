@@ -14,7 +14,10 @@ if($IsCloudLabs){
         $password = $AzurePassword                # READ FROM FILE
         $clientId = $TokenGeneratorClientId       # READ FROM FILE
         $global:sqlPassword = "password.1!!"         # READ FROM FILE
-
+        $OdlId = $odlId
+        $DeploymentId = $deploymentID
+        $validstatus = "started"
+        
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
         
@@ -447,13 +450,7 @@ else {
     Write-Warning "Validation Failed - see log output"
      $validstatus = "Failed"
 }
-   
-   . C:\LabFiles\AzureCreds.ps1
-      
-    $OdlId = $odlId
-    $DeploymentId = $deploymentID
-    $validstatus = "started"
-
+  
      $uri = 'https://prod-84.eastus.logic.azure.com:443/workflows/005f93b9e5804534aaf5e2e891936fd7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=9mXa-Wts-DhG7eOYmAHiArZ0fPUFB34m0J_W2JEs9Z8'
      $bodyMsg = @(
     @{ "OdlId" = "$OdlId";
