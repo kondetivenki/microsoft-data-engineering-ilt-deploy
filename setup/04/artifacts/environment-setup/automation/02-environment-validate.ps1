@@ -68,6 +68,19 @@ $global:tokenTimes = [ordered]@{
 
 $overallStateIsValid = $true
 
+Write-Information "Checking if PBI desktop is installed or not"
+$filetocheck= "C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe"
+
+if(!(Test-Path $filetocheck -PathType leaf))
+{
+ Write-Information "Powerbi is not installed, Installing it" 
+ $overallStateIsValid= $false
+ Start-Process -FilePath "C:\LabFiles\PBIDesktop_x64.exe" -ArgumentList '-quiet','ACCEPT_EULA=1' -Wait
+}
+else{
+Write-Information "Powerbi ok"
+}
+
 $asaArtifacts = [ordered]@{
 
         "wwi02_sale_small_workload_01_asa" = @{ 
