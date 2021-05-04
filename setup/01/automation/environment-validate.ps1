@@ -11,7 +11,11 @@ Import-Module "..\solliance-synapse-automation"
         $clientId = $TokenGeneratorClientId       # READ FROM FILE
         $global:sqlPassword = "password.1!!"      # READ FROM FILE
         $uniqueId = $deploymentID
-
+        
+         $OdlId = $odlId
+        $DeploymentId = $deploymentID
+        $validstatus = "started"
+        
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
         
@@ -355,15 +359,12 @@ else {
 
        
 
-        $depId = $deploymentID
-        $initstatus = "Started"
-
-      $uri = 'https://prod-04.centralus.logic.azure.com:443/workflows/8f1e715486db4e82996e45f86d84edc6/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=5fJRgTtLIkSidgMmhFXU_DfubS837o8po0BBvCGuGeA'
-        $bodyMsg = @(
-             @{ "DeploymentId" = "$depId"; 
-              "InitiationStatus" =  "$initstatus"; 
-              "ValidationStatus" = "$validstatus" }
-              )
+    $uri = 'https://prod-84.eastus.logic.azure.com:443/workflows/005f93b9e5804534aaf5e2e891936fd7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=9mXa-Wts-DhG7eOYmAHiArZ0fPUFB34m0J_W2JEs9Z8'
+     $bodyMsg = @(
+    @{ "OdlId" = "$OdlId";
+       "DeploymentId" =  "$DeploymentId";
+       "validstatus" = "$validstatus" }
+        )
        $body = ConvertTo-Json -InputObject $bodyMsg
        $header = @{ message = "StartedByScript"}
        $response = Invoke-RestMethod -Method post -Uri $uri -Body $body -Headers $header  -ContentType "application/json"
