@@ -453,5 +453,17 @@ az ad app owner add --id $id --owner-object-id $objid
 $secretValue = $pass | ConvertTo-SecureString -AsPlainText -Force
 Set-AzKeyVaultSecret -VaultName $keyVaultName -Name "ASA-GA-LABS" -SecretValue $secretValue
 
+Write-Information "Checking if PBI desktop is installed or not"
+$filetocheck= "C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe"
+
+if(!(Test-Path $filetocheck -PathType leaf))
+{
+ Write-Information "Powerbi is not installed, Installing it" 
+ Start-Process -FilePath "C:\LabFiles\PBIDesktop_x64.exe" -ArgumentList '-quiet','ACCEPT_EULA=1' -Wait
+}
+else{
+Write-Information "Powerbi ok"
+}
+
 #$secretValue = ConvertTo-SecureString $app.password -AsPlainText -Force
 #Set-AzKeyVaultSecret -VaultName $keyVaultName -Name "ASA-GA-LABS" -SecretValue $secretValue
