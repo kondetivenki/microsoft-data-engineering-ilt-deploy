@@ -67,6 +67,18 @@ $global:tokenTimes = [ordered]@{
 
 $overallStateIsValid = $true
 
+Write-Information "Checking if PBI desktop is installed or not"
+$filetocheck= "C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe"
+
+if(!(Test-Path $filetocheck -PathType leaf))
+{
+ Write-Information "Powerbi is not installed, Installing it" 
+ $overallStateIsValid= $false
+}
+else{
+Write-Information "Powerbi ok"
+}
+
 $result = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
     if ($result.properties.status -ne "Online") {
     Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action resume
