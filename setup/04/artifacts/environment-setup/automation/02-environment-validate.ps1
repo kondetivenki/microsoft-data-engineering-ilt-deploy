@@ -75,7 +75,6 @@ if(!(Test-Path $filetocheck -PathType leaf))
 {
  Write-Information "Powerbi is not installed, Installing it" 
  $overallStateIsValid= $false
- Start-Process -FilePath "C:\LabFiles\PBIDesktop_x64.exe" -ArgumentList '-quiet','ACCEPT_EULA=1' -Wait
 }
 else{
 Write-Information "Powerbi ok"
