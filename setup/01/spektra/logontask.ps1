@@ -16,6 +16,8 @@ sleep 5
 sleep 5
 ./powerbi-setup.ps1
 
+./environment-validate.ps1
+
 cd C:\
 Remove-Item 'C:\LabFiles\asa' -Recurse -force
 
