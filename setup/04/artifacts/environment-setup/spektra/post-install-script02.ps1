@@ -217,6 +217,8 @@ Write-Host "Installing CosmosDB Module." -ForegroundColor Green -Verbose
 Install-Module -Name Az.CosmosDB -AllowClobber
 Import-Module Az.CosmosDB
 
+Remove-AzResourceGroupDeployment -ResourceGroupName "DP203" -Name "00-asa-workspace-core"
+
 #Download PowerBI
 $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://download.microsoft.com/download/8/8/0/880BCA75-79DD-466A-927D-1ABF1F5454B0/PBIDesktopSetup_x64.exe","C:\LabFiles\PBIDesktop_x64.exe")
