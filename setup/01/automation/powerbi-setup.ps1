@@ -97,17 +97,3 @@ Write-Information "Create PowerBI linked service $($powerBIName)"
 $result = Create-PowerBILinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $powerBIName -WorkspaceId $wsid
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
-
- $depId = $deploymentID
-        $initstatus = "Completed"
-        $validstatus = "Tobestarted"
-
-        $uri = 'https://prod-04.centralus.logic.azure.com:443/workflows/8f1e715486db4e82996e45f86d84edc6/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=5fJRgTtLIkSidgMmhFXU_DfubS837o8po0BBvCGuGeA'
-        $bodyMsg = @(
-             @{ "DeploymentId" = "$depId"; 
-              "InitiationStatus" =  "$initstatus"; 
-              "ValidationStatus" = "$validstatus" }
-              )
-       $body = ConvertTo-Json -InputObject $bodyMsg
-       $header = @{ message = "StartedByScript"}
-       $response = Invoke-RestMethod -Method post -Uri $uri -Body $body -Headers $header  -ContentType "application/json"
