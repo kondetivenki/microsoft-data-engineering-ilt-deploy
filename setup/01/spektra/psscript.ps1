@@ -239,7 +239,7 @@ $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/01/spektra/logontask.ps1","C:\LabFiles\logontask.ps1")
 
 $WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://download.visualstudio.microsoft.com/download/pr/887938c3-2a46-4069-a0b1-207035f1dd82/5efe8a08af6d5b06457238a9316c56b6/ndp472-kb4054531-web.exe","C:\dotnet.exe")
+$WebClient.DownloadFile("https://download.visualstudio.microsoft.com/download/pr/887938c3-2a46-4069-a0b1-207035f1dd82/5efe8a08af6d5b06457238a9316c56b6/ndp472-kb4054531-web.exe","C:\LabFiles\dotnet.exe")
 
 #Enable Autologon
 $AutoLogonRegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
