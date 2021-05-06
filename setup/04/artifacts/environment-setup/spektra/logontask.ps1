@@ -16,5 +16,8 @@ Unregister-ScheduledTask -TaskName "Setup" -Confirm:$false
 
 cd C:\
 Remove-Item 'C:\LabFiles\data-engineering-ilt-deployment' -Recurse -force
+Remove-Item  'C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension' -Recurse -force
+
+Remove-Item 'C:\LabFiles\logontask.ps1' -Recurse -force
 
 Stop-Transcript
