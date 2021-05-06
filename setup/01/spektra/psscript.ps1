@@ -234,11 +234,6 @@ New-AzRoleAssignment -ResourceGroupName $resourceGroupName -ErrorAction Ignore -
 $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://download.microsoft.com/download/8/8/0/880BCA75-79DD-466A-927D-1ABF1F5454B0/PBIDesktopSetup_x64.exe","C:\LabFiles\PBIDesktop_x64.exe")
 
-$WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://download.visualstudio.microsoft.com/download/pr/887938c3-2a46-4069-a0b1-207035f1dd82/5efe8a08af6d5b06457238a9316c56b6/ndp472-kb4054531-web.exe","C:\dotnet.exe")
-C:\dotnet.exe /silent /install
-sleep 3
-
 $LabFilesDirectory = "C:\LabFiles"
 $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/01/spektra/logontask.ps1","C:\LabFiles\logontask.ps1")
