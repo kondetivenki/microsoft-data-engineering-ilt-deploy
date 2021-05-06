@@ -228,7 +228,7 @@ Remove-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name "de
 
 cd C:\
 Remove-Item 'C:\LabFiles\data-engineering-ilt-deployment' -Recurse -force
-Remove-Item 'C:\LabFiles\temp.ps1' -Recurse -force
+Remove-Item 'C:\LabFiles\template.ps1' -Recurse -force
 Remove-Item  'C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension' -Recurse -force
 
 Stop-Transcript
