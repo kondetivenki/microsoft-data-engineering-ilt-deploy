@@ -178,9 +178,9 @@ Write-Host "Download Git repo." -ForegroundColor Green -Verbose
 git clone https://github.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy.git data-engineering-ilt-deployment
 
 $WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/14/spektra/temp.ps1","C:\LabFiles\temp.ps1")
+$WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/14/spektra/template.ps1","C:\LabFiles\template.ps1")
 
-.\temp.ps1
+.\template.ps1
 
 <#. C:\LabFiles\AzureCreds.ps1
 
