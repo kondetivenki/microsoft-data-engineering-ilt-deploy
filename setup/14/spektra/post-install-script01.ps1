@@ -177,8 +177,12 @@ CreateCredFile $azureUsername $azurePassword $azureTenantID $azureSubscriptionID
 Write-Host "Download Git repo." -ForegroundColor Green -Verbose
 git clone https://github.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy.git data-engineering-ilt-deployment
 
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/14/spektra/temp.ps1","C:\LabFiles\temp.ps1")
 
-. C:\LabFiles\AzureCreds.ps1
+.\temp.ps1
+
+<#. C:\LabFiles\AzureCreds.ps1
 
 $userName = $AzureUserName                # READ FROM FILE
 $password = $AzurePassword                # READ FROM FILE
@@ -220,10 +224,11 @@ Import-Module Az.CosmosDB
 
 New-AzRoleAssignment -ResourceGroupName $resourceGroupName -ErrorAction Ignore -ObjectId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e" -RoleDefinitionName "Owner"
 
-Remove-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name "deploy"
+Remove-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name "deploy" #>
 
 cd C:\
 Remove-Item 'C:\LabFiles\data-engineering-ilt-deployment' -Recurse -force
+Remove-Item 'C:\LabFiles\temp.ps1' -Recurse -force
 Remove-Item  'C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension' -Recurse -force
 
 Stop-Transcript
