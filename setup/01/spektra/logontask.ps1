@@ -3,7 +3,7 @@ Start-Transcript -Path C:\WindowsAzure\Logs\logontasklogs.txt -Append
 #Install power Bi desktop
 Start-Process -FilePath "C:\LabFiles\PBIDesktop_x64.exe" -ArgumentList '-quiet','ACCEPT_EULA=1'
 
-C:\LabFiles\dotnet.exe /silent /install
+C:\dotnet.exe /silent /install
 
 <#Write-Information "Checking if Dotnet is installed or not"
 $filetocheck= "C:\dotnet.exe"
