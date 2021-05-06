@@ -32,6 +32,7 @@ sleep 5
 
 cd C:\
 Remove-Item 'C:\LabFiles\asa' -Recurse -force
+Remove-Item  'C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension' -Recurse -force
 
 Unregister-ScheduledTask -TaskName "Setup" -Confirm:$false
 
