@@ -230,7 +230,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 New-AzRoleAssignment -ResourceGroupName $resourceGroupName -ErrorAction Ignore -ObjectId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e" -RoleDefinitionName "Owner"
 
-Remove-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name "armdeploy-mod1and17"
+Remove-AzResourceGroupDeployment -ResourceGroupName "DP203-M1" -Name "armdeploy-mod1and17"
 
 #Download PowerBI
 $WebClient = New-Object System.Net.WebClient
