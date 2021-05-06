@@ -220,4 +220,10 @@ Import-Module Az.CosmosDB
 
 New-AzRoleAssignment -ResourceGroupName $resourceGroupName -ErrorAction Ignore -ObjectId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e" -RoleDefinitionName "Owner"
 
+Remove-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name "deploy"
+
+cd C:\
+Remove-Item 'C:\LabFiles\data-engineering-ilt-deployment' -Recurse -force
+Remove-Item  'C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension' -Recurse -force
+
 Stop-Transcript
