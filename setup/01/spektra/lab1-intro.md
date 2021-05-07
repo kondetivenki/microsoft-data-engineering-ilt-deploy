@@ -2,8 +2,11 @@
 
 ## Log-in to the Azure portal
 
-1.  Open a Browser and sign in to the Azure Portal (<https://portal.azure.com/>) with the following credentials:
-   
+1. In the LabVM, double click on the Azure portal shortcut on the desktop.
+
+     ![](media/azure_portal.png "Lab Environment") 
+     
+2. On **Sign in to Microsoft Azure** blade, you will see a login screen, in that enter the following email/username and then click on **Next**.  
    * **Azure Usename/Email**:  <inject key="AzureAdUserEmail"></inject>
    * **Azure Password**:  <inject key="AzureAdUserPassword"></inject>
 
