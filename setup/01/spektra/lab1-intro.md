@@ -1,6 +1,6 @@
 ## **Getting Started**
 
-## Log-in to the Azure portal
+### Log-in to the Azure portal
 
 1. In the LabVM, double click on the Azure portal shortcut on the desktop.
 
@@ -22,7 +22,7 @@
 
 1. Click on **Next** from the bottom right corner and follow the instructions to perform the lab.
 
-## Modules Included
+### Modules Included
 
    In this hands on lab you will perform the following modules:
 
