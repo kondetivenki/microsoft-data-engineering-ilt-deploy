@@ -1,0 +1,25 @@
+[
+  {
+    "Name": "DP 203 : Data Engineering on Azure - Lab 01",
+    "Language": "English",
+    "BaseURL": "https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/01/spektra/v2/lab1-intro.md",
+        "Order": 1
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/main/Instructions/Labs/01/README.md",
+        "Order": 2
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/main/Instructions/Labs/06/README.md",
+        "Order": 3
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/main/Instructions/Labs/15/README.md",
+        "Order": 4
+      }
+    ]
+  }
+]
