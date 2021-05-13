@@ -11,7 +11,7 @@
                     "Microsoft.ContainerRegistry/registries/*",
                     "microsoft.insights/actiongroups/*",
                     "Microsoft.Insights/components/*",
-                    "Microsoft.KeyVault/vaults/*"
+                    "Microsoft.KeyVault/vaults/*",
                     "Microsoft.MachineLearningServices/workspaces/*",
                     "Microsoft.Resources/deployments/*",
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
