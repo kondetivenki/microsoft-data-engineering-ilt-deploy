@@ -7,7 +7,7 @@
         "Value": "02"
       }
     ]
-  }
+  },
   {
     "ResourceType": "Microsoft.Synapse/workspaces/bigDataPools",
     "Parameter": [
