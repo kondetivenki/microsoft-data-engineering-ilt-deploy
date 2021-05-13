@@ -1,0 +1,127 @@
+{
+	 "if": {
+	    "anyOf": [
+		 {
+			"not": {
+			  "anyOf": [
+                    {
+				    "field": "type",
+				    "like": "microsoft.alertsmanagement/smartDetectorAlertRules/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.CognitiveServices/accounts/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.ContainerRegistry/registries/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "microsoft.insights/actiongroups/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Insights/components/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.KeyVault/vaults/*"
+				    },
+        
+                    {
+				    "field": "type",
+				    "like": "Microsoft.MachineLearningServices/workspaces/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Storage/StorageAccounts/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Synapse/workspaces/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Synapse/workspaces/bigDataPools/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Synapse/workspaces/sqlPools/*"
+				    },
+           {
+              "field": "type",
+              "like": "Microsoft.Sql/servers/*"
+            },
+                    {
+				    "field": "type",
+				    "in": ["Microsoft.Sql/servers","microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.CognitiveServices/accounts", "Microsoft.ContainerRegistry/registries", "microsoft.insights/actiongroups", "Microsoft.Insights/components", "Microsoft.KeyVault/vaults", "Microsoft.Kusto/clusters", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Storage/StorageAccounts", "Microsoft.Synapse/workspaces", "Microsoft.Synapse/workspaces/bigDataPools", "Microsoft.Synapse/workspaces/sqlPools"]
+				    }
+                ]
+			}
+		 },
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.ContainerRegistry/registries"
+			},
+			{
+            "field": "Microsoft.ContainerRegistry/registries/sku.name",
+            "notIn": ["Standard"]
+            }
+			]
+		  },
+    
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.KeyVault/vaults"
+			},
+			{
+            "field": "Microsoft.KeyVault/vaults/sku.name",
+            "notIn": ["Standard"]
+            }
+			]
+		  },
+          {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.SQL/servers/databases"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Sql/servers/databases/requestedServiceObjectiveName",
+              "in": [ "DW100c" ]
+            }
+          }
+        ]
+      },
+            {
+			"allOf": [
+			  {
+				"source": "action",
+				"equals": "Microsoft.Storage/storageAccounts/write"
+			  },
+			  {
+				"field": "type",
+				"equals": "Microsoft.Storage/storageAccounts"
+			  },
+			  {
+				"not": 
+				  {
+					"field": "Microsoft.Storage/storageAccounts/sku.name",
+					"in": ["StandardLRS", "StandardRAGRS"]
+				  }
+			   }
+			]
+		  },
+
+	  ]
+	},
+	"then": {
+	  "effect": "deny"
+	}
+}
