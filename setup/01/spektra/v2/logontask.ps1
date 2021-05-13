@@ -3,7 +3,7 @@ Start-Transcript -Path C:\WindowsAzure\Logs\logontasklogs.txt -Append
 sleep 2
 Cd 'C:\LabFiles\asa\setup\01\automation'
 
-./environment-setup.ps1
+./environment-setup-v2.ps1
 
 sleep 5
 ./lab-01-setup.ps1
