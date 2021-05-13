@@ -20,7 +20,7 @@ if($IsCloudLabs){
         
         Connect-AzAccount -Credential $cred | Out-Null
 
-        $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*-L400*" }).ResourceGroupName
+         $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*DP203-M17*" -and  $_.ResourceGroupName -notlike "*internal*"}).ResourceGroupName
 
         if ($resourceGroupName.Count -gt 1)
         {
@@ -78,7 +78,8 @@ if($IsCloudLabs){
 
 Write-Information "Using $resourceGroupName";
 
-$uniqueId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
+#$uniqueId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
+$uniqueId =  $deploymentID
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
 $global:logindomain = (Get-AzContext).Tenant.Id;
@@ -420,8 +421,35 @@ foreach ($dataset in $loadingDatasets.Keys) {
 
 
 Write-Information "Preparing environment for labs"
+. C:\LabFiles\AzureCreds.ps1
+
+$userName = $AzureUserName
+$password = $AzurePassword
+
+az login --username "$userName" --password "$password"
 
 $app = (az ad sp create-for-rbac -n "Azure Synapse Analytics GA Labs $($uniqueId)" --skip-assignment) | ConvertFrom-Json
 
-$secretValue = ConvertTo-SecureString $app.password -AsPlainText -Force
+#$app = (az ad sp create-for-rbac -n "Azure Synapse Analytics GA Labs" --skip-assignment) | ConvertFrom-Json
+$pass= $app.password
+$id= $app.appId
+$objid= az ad user show -o tsv --query objectId --id "$AzureUserName"
+az ad app owner add --id $id --owner-object-id $objid 
+
+$secretValue = $pass | ConvertTo-SecureString -AsPlainText -Force
 Set-AzKeyVaultSecret -VaultName $keyVaultName -Name "ASA-GA-LABS" -SecretValue $secretValue
+
+Write-Information "Checking if PBI desktop is installed or not"
+$filetocheck= "C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe"
+
+if(!(Test-Path $filetocheck -PathType leaf))
+{
+ Write-Information "Powerbi is not installed, Installing it" 
+ Start-Process -FilePath "C:\LabFiles\PBIDesktop_x64.exe" -ArgumentList '-quiet','ACCEPT_EULA=1' -Wait
+}
+else{
+Write-Information "Powerbi ok"
+}
+
+#$secretValue = ConvertTo-SecureString $app.password -AsPlainText -Force
+#Set-AzKeyVaultSecret -VaultName $keyVaultName -Name "ASA-GA-LABS" -SecretValue $secretValue
