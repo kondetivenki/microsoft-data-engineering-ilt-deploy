@@ -19,9 +19,29 @@ if($subs.GetType().IsArray -and $subs.length -gt 1){
     Select-AzSubscription -SubscriptionName $selectedSubName
 }
 
-$resourceGroupName = Read-Host "Enter the resource group name";
+#$resourceGroupName = Read-Host "Enter the resource group name";
+
+. C:\LabFiles\AzureCreds.ps1
+
+$userName = $AzureUserName
+$password = $AzurePassword
+$clientId = $TokenGeneratorClientId
+
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
+Connect-AzAccount -Credential $cred | Out-Null
+
+$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*DP203-M17*" -and  $_.ResourceGroupName -notlike "*internal*"}).ResourceGroupName
 
 $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+
+
+        $ropcBodyCore = "client_id=$($clientId)&username=$($userName)&password=$($password)&grant_type=password"
+        $global:ropcBodySynapse = "$($ropcBodyCore)&scope=https://dev.azuresynapse.net/.default"
+        $global:ropcBodyManagement = "$($ropcBodyCore)&scope=https://management.azure.com/.default"
+        $global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
+        $global:ropcBodyPowerBI = "$($ropcBodyCore)&scope=https://analysis.windows.net/powerbi/api/.default"
+        
 
 $artifactsPath = "..\..\"
 $reportsPath = "..\reports"
@@ -35,7 +55,9 @@ $sqlScriptsPath = "..\sql"
 Write-Information "Using $resourceGroupName";
 
 $resourceGroup = Get-AzResourceGroup -Name $resourceGroupName
-$uniqueId =  $resourceGroup.Tags["DeploymentId"]
+#$uniqueId =  $resourceGroup.Tags["DeploymentId"]
+. C:\LabFiles\AzureCreds.ps1
+$uniqueId = $deploymentID
 $location = $resourceGroup.Location
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
