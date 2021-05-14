@@ -291,7 +291,7 @@ if ($sparkPool -eq $null) {
          $overallStateIsValid = $false
  
     }   
-     elseif (($count -ne 3) -and ($pipelinesstatus -eq "Failed")){
+     elseif (($count -ne 2) -and ($pipelinesstatus -eq "Failed")){
          $overallStateIsValid = $false
 
     }
