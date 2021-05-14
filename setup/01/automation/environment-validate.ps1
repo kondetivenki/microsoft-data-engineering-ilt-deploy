@@ -266,8 +266,6 @@ if ($sparkPool -eq $null) {
 
          $ExpectedPipelineName = (
             'Setup - Import sales telemetry data',
-            'Setup - Load SQL Pool (customer)',
-            
             'Setup - Load SQL Pool (global)'
     )
     $count = 0
