@@ -71,7 +71,6 @@
     "sparkAutoPauseDelayInMinutes": "15",
     "sparkVersion": "2.4",
     "keyVaultName": "[concat('asagakeyvault', parameters('uniqueSuffix'))]",
-    "clusterName": "[concat('asagadataexpl', parameters('uniqueSuffix'))]",
     "resourceNamePrefix": "DP203-M1",
     "eventHubNamespaceName": "[concat('databricksdemoeventhubs', parameters('uniqueSuffix'))]",
     "eventHubName": "databricks-demo-eventhub",
@@ -393,20 +392,6 @@
         "enableStreamingIngest": false,
         "enablePurge": false,
         "enableDoubleEncryption": false
-      }
-    },
-    {
-      "type": "Microsoft.Kusto/Clusters/Databases",
-      "apiVersion": "2020-06-14",
-      "name": "[concat(variables('clusterName'), '/ASA-Data-Explorer-DB-01')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Kusto/Clusters', variables('clusterName'))]"
-      ],
-      "kind": "ReadWrite",
-      "properties": {
-        "softDeletePeriod": "P3650D",
-        "hotCachePeriod": "P31D"
       }
     },
     {
