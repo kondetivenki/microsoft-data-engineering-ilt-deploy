@@ -5,11 +5,8 @@ Cd 'C:\LabFiles\asa\setup\01\automation'
 
 ./environment-setup-v2.ps1
 
-sleep 5
-./lab-01-setup.ps1
-
 sleep 2
-./environment-validate.ps1
+./environment-validate-v2.ps1
 
 cd C:\
 Remove-Item 'C:\LabFiles\asa' -Recurse -force
