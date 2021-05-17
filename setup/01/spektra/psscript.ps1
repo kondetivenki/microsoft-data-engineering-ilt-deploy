@@ -243,6 +243,8 @@ $WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabs-MOC/microso
 $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://download.visualstudio.microsoft.com/download/pr/887938c3-2a46-4069-a0b1-207035f1dd82/5efe8a08af6d5b06457238a9316c56b6/ndp472-kb4054531-web.exe","C:\dotnet.exe")
 
+Invoke-WebRequest -Uri "https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/blob/main/Instructions/Labs/17/ProductQuantityForecast.pbix?raw=true" -OutFile "C:\LabFiles\ProductQuantityForecast.pbix"
+
 #Enable Autologon
 $AutoLogonRegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 Set-ItemProperty -Path $AutoLogonRegPath -Name "AutoAdminLogon" -Value "1" -type String 
