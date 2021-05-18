@@ -202,7 +202,7 @@
               "autoUpgradeMinorVersion": true,
               "settings": {
                 "fileUris": [
-                  "https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/04/spektra/v2/psscript.ps1"
+                  "https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/04/artifacts/environment-setup/spektra/v2/psscript.ps1"
                 ]
               },
               "protectedSettings": {
