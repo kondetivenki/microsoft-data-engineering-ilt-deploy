@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "vmAdminUsername": {
+        "value": "labuser"
+      },
+      "vmAdminPassword": {
+        "value": "Password.1!!"
+      },
+      "azureUsername": {
+        "value": "GET-AZUSER-UPN"
+      },
+      "azurePassword": {
+        "value": "GET-AZUSER-PASSWORD"
+      },
+      "odlId": {
+        "value": "GET-ODL-ID"
+      },
+      "deploymentId": {
+        "value": "GET-DEPLOYMENT-ID"
+      },
+       "InstallCloudLabsShadow": {
+      "value": "yes"
+    }
+  }
+}
