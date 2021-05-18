@@ -1,5 +1,5 @@
 $InformationPreference = "Continue"
-Cd 'C:\LabFiles\asa\setup\01\automation'
+Cd 'C:\LabFiles\asa\setup\17\automation'
 
 Remove-Module solliance-synapse-automation
 Import-Module -Name newtonsoft.json
