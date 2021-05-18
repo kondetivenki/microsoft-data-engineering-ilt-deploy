@@ -22,7 +22,7 @@ if($IsCloudLabs){
         
         Connect-AzAccount -Credential $cred | Out-Null
 
-        $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*DP203*" -and  $_.ResourceGroupName -notlike "*labrg*" }).ResourceGroupName
+        $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*DP203-L4*" -and  $_.ResourceGroupName -notlike "*labrg*" }).ResourceGroupName
 
         if ($resourceGroupName.Count -gt 1)
         {
