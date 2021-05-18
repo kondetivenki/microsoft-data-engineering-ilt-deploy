@@ -22,11 +22,10 @@ Cd 'C:\LabFiles\asa\setup\17\automation'
 sleep 5
 ./lab-01-setup.ps1
 
-
 sleep 5
 ./powerbi-setup.ps1
 
-#./environment-validate.ps1
+./environment-validate.ps1
 
 cd C:\
 Remove-Item 'C:\LabFiles\asa' -Recurse -force
