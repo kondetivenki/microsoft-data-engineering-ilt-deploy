@@ -22,6 +22,8 @@
 
 1. Click on **Next** from the bottom right corner and follow the instructions to perform the lab.
 
+IMPORTANT: Please resume the SQLPool only when you perform Module 17 and keep it paused for the remaining modules(1,6,15).
+
 ### Modules Included
 
    In this hands on lab you will perform the following modules:
