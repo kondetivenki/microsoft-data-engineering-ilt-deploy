@@ -10,7 +10,7 @@ Cd 'C:\LabFiles\data-engineering-ilt-deployment\setup\04\artifacts\environment-s
 
 sleep 5
 
-.\02-environment-validate-v2.ps1
+.\02-environment-validate.ps1
 
 Unregister-ScheduledTask -TaskName "Setup" -Confirm:$false
 
