@@ -236,7 +236,7 @@ Write-Host "Installing CosmosDB Module." -ForegroundColor Green -Verbose
 Install-Module -Name Az.CosmosDB -AllowClobber
 Import-Module Az.CosmosDB
 
-Remove-AzResourceGroupDeployment -ResourceGroupName "DP203-L4" -Name "v2-asa-workspace-core"
+Remove-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name "v2-asa-workspace-core"
 
 #Download PowerBI
 $WebClient = New-Object System.Net.WebClient
