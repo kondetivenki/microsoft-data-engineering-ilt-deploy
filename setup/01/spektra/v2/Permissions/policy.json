@@ -38,16 +38,12 @@
 				    },
                     {
 				    "field": "type",
-				    "like": "Microsoft.Kusto/clusters/*"
-				    },
-                    {
-				    "field": "type",
 				    "like": "Microsoft.Storage/*"
 				    },
                   
                     {
 				    "field": "type",
-				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.CognitiveServices/accounts", "Microsoft.ContainerRegistry/registries", "Microsoft.Databricks/workspaces", "Microsoft.EventHub/namespaces", "microsoft.insights/actiongroups", "Microsoft.Insights/components", "Microsoft.KeyVault/vaults", "Microsoft.Kusto/clusters", "Microsoft.Storage"]
+				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.CognitiveServices/accounts", "Microsoft.ContainerRegistry/registries", "Microsoft.Databricks/workspaces", "Microsoft.EventHub/namespaces", "microsoft.insights/actiongroups", "Microsoft.Insights/components", "Microsoft.KeyVault/vaults",  "Microsoft.Storage"]
 				    }
                 ]
 			}
