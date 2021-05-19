@@ -66,7 +66,7 @@ $global:tokenTimes = [ordered]@{
 
 $overallStateIsValid = $true
 
-Write-Information "Checking if PBI desktop is installed or not"
+<#Write-Information "Checking if PBI desktop is installed or not"
 $filetocheck= "C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe"
 
 if(!(Test-Path $filetocheck -PathType leaf))
@@ -76,7 +76,7 @@ if(!(Test-Path $filetocheck -PathType leaf))
 }
 else{
 Write-Information "Powerbi ok"
-}
+} #>
 
 $asaArtifacts = [ordered]@{
         "$($dataLakeAccountName)" = @{
