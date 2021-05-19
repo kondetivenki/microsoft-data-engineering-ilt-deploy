@@ -16,7 +16,7 @@
                     "Microsoft.Resources/deployments/*",
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
                     "Microsoft.Storage/storageAccounts/*",
-                    "Microsoft.Synapse/workspaces/
+                    "Microsoft.Synapse/workspaces/*"
                     "Microsoft.Synapse/workspaces/bigDataPools/*"
                     "Microsoft.Synapse/workspaces/sqlPools/*"
                 ],
