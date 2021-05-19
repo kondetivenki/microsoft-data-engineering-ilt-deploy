@@ -1,0 +1,25 @@
+{
+    "Name": "DP203 Lab 04 - RBAC",
+    "Id": null,
+    "IsCustom": true,
+    "Description": "CloudLabs Sample Workshop Custom Role.",
+    "Actions": [
+      "Microsoft.Authorization/roleAssignments/write",
+      "Microsoft.Authorization/roleAssignments/delete",	
+      "Microsoft.Resources/deployments/*",
+      "Microsoft.Resources/deployments/validate/action",
+      "Microsoft.Resources/subscriptions/resourceGroups/read",
+      "Microsoft.Storage/storageAccounts/*",
+      "Microsoft.Synapse/workspaces/*",
+       "Microsoft.KeyVault/vaults/*",
+       "Microsoft.insights/actiongroups/*",
+       "Microsoft.insights/components/*",
+       "Microsoft.DocumentDB/databaseAccounts/*",
+       "Microsoft.Resources/tags/*"
+    ],
+    "NotActions": [
+     "Microsoft.Authorization/policyDefinitions/*",
+     "Microsoft.Authorization/policyAssignments/*",
+     "Microsoft.Authorization/policySetDefinitions/*"
+ ]
+  }
