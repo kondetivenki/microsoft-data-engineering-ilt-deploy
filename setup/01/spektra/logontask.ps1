@@ -19,11 +19,6 @@ Cd 'C:\LabFiles\asa\setup\01\automation'
 
 ./environment-setup-mod1.ps1
 
-sleep 5
-./lab-01-setup.ps1
-
-<#sleep 5
-./lab-02-setup.ps1 #>
 
 sleep 5
 ./powerbi-setup.ps1
