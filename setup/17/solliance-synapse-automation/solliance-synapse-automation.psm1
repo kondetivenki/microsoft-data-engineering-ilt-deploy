@@ -12,6 +12,21 @@ function AutoPauseAllPS()
         }
     }
 }
+function Query-Pipeline {
+    
+    param(
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $WorkspaceName
+)
+
+    $uri = "https://$($WorkspaceName).dev.azuresynapse.net/queryPipelineRuns?api-version=2019-06-01"
+ $result = Invoke-RestMethod  -Uri $uri -Method POST -Headers @{ Authorization="Bearer $synapseToken" }
+    Ensure-ValidTokens
+   
+    return $result
+}
 
 function AutoPauseAll($subscriptionId)
 {
@@ -1745,3 +1760,4 @@ Export-ModuleMember -Function Check-HttpRedirect
 Export-ModuleMember -Function GetCSRF
 Export-ModuleMember -Function AutoPauseAll
 Export-ModuleMember -Function Set-SqlAdministrator
+Export-ModuleMember -Function Query-Pipeline
