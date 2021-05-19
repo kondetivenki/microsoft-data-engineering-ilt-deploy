@@ -237,6 +237,7 @@ Install-Module -Name Az.CosmosDB -AllowClobber
 Import-Module Az.CosmosDB
 
 Remove-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name "v2-asa-workspace-core"
+New-AzRoleAssignment -ResourceGroupName $resourceGroupName -ErrorAction Ignore -ObjectId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e" -RoleDefinitionName "Owner"
 
 #Download PowerBI
 $WebClient = New-Object System.Net.WebClient
