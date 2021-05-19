@@ -45,7 +45,6 @@ $workspaceName = "asagaworkspace$($uniqueId)"
 $dataLakeAccountName = "asagadatalake$($uniqueId)"
 $keyVaultName = "asagakeyvault$($uniqueId)"
 $keyVaultSQLUserSecretName = "SQL-USER-ASA"
-$sqlPoolName = "SQLPool01"
 $integrationRuntimeName = "AutoResolveIntegrationRuntime"
 $sparkPoolName = "SparkPool01"
 $powerBIName = "asagapowerbi$($uniqueId)"
@@ -79,23 +78,7 @@ else{
 Write-Information "Powerbi ok"
 }
 
-$result = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
-    if ($result.properties.status -ne "Online") {
-    Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action resume
-    Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
-    }
-
-
-
 $asaArtifacts = [ordered]@{
-        "sqlpool01" = @{
-                Category = "linkedServices"
-                Valid = $false
-        }
-        "sqlpool01_highperf" = @{
-                Category = "linkedServices"
-                Valid = $false
-        }
         "$($dataLakeAccountName)" = @{
                 Category = "linkedServices"
                 Valid = $false
@@ -119,125 +102,7 @@ foreach ($asaArtifactName in $asaArtifacts.Keys) {
         }
 }
 
-# the $asaArtifacts contains the current status of the workspace
 
-Write-Information "Checking SQLPool $($sqlPoolName)..."
-$sqlPool = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
-if ($sqlPool -eq $null) {
-        Write-Warning "    The SQL pool $($sqlPoolName) was not found"
-        $overallStateIsValid = $false
-} else {
-        Write-Information "OK"
-
-        $tables = [ordered]@{
-                "wwi.Customer" =@{
-                        Count = 1000000
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi.Date"= @{
-                        Count = 3652
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi.Product" = @{
-                        Count = 5000
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi.ProductQuantityForecast" =@{
-                        Count = 12
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi.ProductReview" = @{
-                        Count = 0
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi.Sale" = @{
-                        Count = 8527676
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                
-        }}
-        
-$query = @"
-SELECT
-        S.name as SchemaName
-        ,T.name as TableName
-FROM
-        sys.tables T
-        join sys.schemas S on
-                T.schema_id = S.schema_id
-"@
-        $result = Invoke-SqlCmd -Query $query -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-
-        #foreach ($dataRow in $result.data) {
-        foreach ($dataRow in $result) {
-                $schemaName = $dataRow[0]
-                $tableName = $dataRow[1]
-        
-                $fullName = "$($schemaName).$($tableName)"
-        
-                if ($tables[$fullName]) {
-                        
-                        $tables[$fullName]["Valid"] = $true
-                        $strictCount = $tables[$fullName]["StrictCount"]
-        
-                        Write-Information "Counting table $($fullName) with StrictCount = $($strictCount)..."
-        
-                        try {
-                            $countQuery = "select count_big(*) from $($fullName)"
-
-                            #$countResult = Execute-SQLQuery -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -SQLQuery $countQuery
-                            #count = [int64]$countResult[0][0].data[0].Get(0)
-                            $countResult = Invoke-Sqlcmd -Query $countQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-                            $count = $countResult[0][0]
-        
-                            Write-Information "    Count result $($count)"
-        
-                            if (
-                                ($strictCount -and ($count -eq $tables[$fullName]["Count"])) -or
-                                ((-not $strictCount) -and ($count -ge $tables[$fullName]["Count"]))) {
-
-                                    Write-Information "    OK - Records counted is correct."
-                                    $tables[$fullName]["ValidCount"] = $true
-                            }
-                            else {
-                                Write-Warning "    Records counted is NOT correct."
-                                $overallStateIsValid = $false
-                            }
-                        }
-                        catch { 
-                            Write-Warning "    Error while querying table."
-                            $overallStateIsValid = $false
-                        }
-        
-                }
-        }
-        
-        # $tables contains the current status of the necessary tables
-        foreach ($tableName in $tables.Keys) {
-                if (-not $tables[$tableName]["Valid"]) {
-                        Write-Warning "Table $($tableName) was not found."
-                        $overallStateIsValid = $false
-                }
-        }
-
-        $users = [ordered]@{
-                "dbo" = @{ Valid = $false }
-                "guest" = @{ Valid = $false }
-                "asaga.sql.highperf" = @{ Valid = $false }
-                "$workspaceName"= @{ Valid = $false }
-        }
 
 Write-Information "Checking Spark pool $($sparkPoolName)"
 $sparkPool = Get-SparkPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SparkPoolName $sparkPoolName
@@ -247,45 +112,6 @@ if ($sparkPool -eq $null) {
 } else {
         Write-Information "OK"
 }
-
-
- $pipelineresult= Query-pipeline -WorkspaceName $workspaceName
-
-         $ExpectedPipelineName = (
-            'Setup - Load SQL Pool (customer)',
-            'Setup - Load SQL Pool (global)'
-    )
-    $count = 0
-
-    $pipelineresult.value | ForEach-Object -Process {
-    
-   
-        if ( ($_.status -eq "Succeeded") -and ($ExpectedPipelineName -contains $_.pipelineName ) ) {
-
-            Write-Output " " $workspacename $_.pipelineName  $_.status
-            $count = $count + 1; 
-    
-        } 
-        else{
-
-            Write-Output " " $workspacename $_.pipelineName  $_.status
-           $overallStateIsValid = $false
-      
-        }
-
-    }
-     if ($pipelineresult.value.Count -eq 0 ){
-         $overallStateIsValid = $false
- 
-    }   
-     elseif (($count -ne 2) -and ($pipelinesstatus -eq "Failed")){
-         $overallStateIsValid = $false
-
-    }
-    else{
-       Write-Information "Pipeline runs ok"
-    } 
-
 
 Write-Information "Checking datalake account $($dataLakeAccountName)..."
 $dataLakeAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName
