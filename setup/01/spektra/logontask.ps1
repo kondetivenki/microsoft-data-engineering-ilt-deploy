@@ -17,7 +17,7 @@ if(!(Test-Path $filetocheck -PathType leaf))
 sleep 2
 Cd 'C:\LabFiles\asa\setup\01\automation'
 
-./environment-setup.ps1
+./environment-setup-mod1.ps1
 
 sleep 5
 ./lab-01-setup.ps1
