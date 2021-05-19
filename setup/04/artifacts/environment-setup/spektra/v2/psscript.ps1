@@ -251,7 +251,7 @@ Start-Process msiexec.exe -Wait '/I C:\Packages\msoidcli_64bit.msi /qn' -Verbose
 
 $LabFilesDirectory = "C:\LabFiles"
 $WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/04/artifacts/environment-setup/spektra/logontask.ps1","C:\LabFiles\logontask.ps1")
+$WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabs-MOC/microsoft-data-engineering-ilt-deploy/main/setup/04/artifacts/environment-setup/spektra/v2/logontask.ps1","C:\LabFiles\logontask.ps1")
 
 Invoke-WebRequest -Uri "https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/blob/master/Instructions/Labs/07/sale-small-20100102-snappy.parquet?raw=true" -OutFile "C:\LabFiles\sale-small-20100102-snappy.parquet" 
 Invoke-WebRequest -Uri "https://solliancepublicdata.blob.core.windows.net/notebooks/Lab%202%20-%20Explore%20with%20Spark.ipynb" -OutFile "C:\LabFiles\Lab 2 - Explore with Spark.ipynb"
