@@ -3,10 +3,10 @@ Start-Transcript -Path C:\WindowsAzure\Logs\logontasklogs.txt -Append
 sleep 2
 Cd 'C:\LabFiles\asa\setup\01\automation'
 
-./environment-setup-v2.ps1
+.\environment-setup-v2.ps1
 
 sleep 2
-./environment-validate-v2.ps1
+.\environment-validate-v2.ps1
 
 cd C:\
 Remove-Item 'C:\LabFiles\asa' -Recurse -force
