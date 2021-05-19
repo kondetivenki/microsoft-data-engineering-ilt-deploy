@@ -6,11 +6,11 @@ Start-Process -FilePath "C:\LabFiles\PBIDesktop_x64.exe" -ArgumentList '-quiet',
 
 Cd 'C:\LabFiles\data-engineering-ilt-deployment\setup\04\artifacts\environment-setup\automation'
 
-.\01-environment-setup-v2.ps1
+.\environment-setup-v2.ps1
 
 sleep 5
 
-.\02-environment-validate-V2.ps1
+.\02-environment-validate-v2.ps1
 
 Unregister-ScheduledTask -TaskName "Setup" -Confirm:$false
 
