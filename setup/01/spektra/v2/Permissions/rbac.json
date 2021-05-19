@@ -8,7 +8,6 @@
                     "Microsoft.Authorization/roleAssignments/write",
                     "Microsoft.Authorization/*/read",
                     "Microsoft.CognitiveServices/accounts/*",
-                    "Microsoft.ContainerRegistry/registries/*",
                     "Microsoft.Databricks/workspaces/*",
                     "Microsoft.EventHub/namespaces/*",
                     "microsoft.insights/actiongroups/*",
@@ -16,7 +15,10 @@
                     "Microsoft.KeyVault/vaults/*",
                     "Microsoft.Resources/deployments/*",
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
-                    "Microsoft.Storage/storageAccounts/*"
+                    "Microsoft.Storage/storageAccounts/*",
+                    "Microsoft.Synapse/workspaces/
+                    "Microsoft.Synapse/workspaces/bigDataPools/*"
+                    "Microsoft.Synapse/workspaces/sqlPools/*"
                 ],
     "NotActions":  [
 
