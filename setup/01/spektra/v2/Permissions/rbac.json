@@ -7,7 +7,6 @@
                     "microsoft.alertsmanagement/smartDetectorAlertRules/*",
                     "Microsoft.Authorization/roleAssignments/write",
                     "Microsoft.Authorization/*/read",
-                    "Microsoft.CognitiveServices/accounts/*",
                     "Microsoft.Databricks/workspaces/*",
                     "Microsoft.EventHub/namespaces/*",
                     "microsoft.insights/actiongroups/*",
