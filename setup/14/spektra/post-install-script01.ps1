@@ -16,7 +16,10 @@ Param (
   $odlId,
     
   [string]
-  $deploymentId
+  $deploymentId,
+  
+  [string]
+  $InstallCloudLabsShadow
 )
 
 function InstallGit()
@@ -34,6 +37,20 @@ function InstallGit()
 
 }
 
+#Cloudlabs shadow
+Function InstallCloudLabsShadow($odlid, $InstallCloudLabsShadow)
+    {
+        if($InstallCloudLabsShadow -eq 'yes')
+        {
+            $WebClient = New-Object System.Net.WebClient
+            $url1 = "https://spektrasystems.screenconnect.com/Bin/ConnectWiseControl.ClientSetup.msi?h=instance-ma1weu-relay.screenconnect.com&p=443&k=BgIAAACkAABSU0ExAAgAAAEAAQDhrCYwK%2BhPzyOyTYW71BahP4Q7hsWvkU20udO6d7cGuH8VAADzVNnsk39zavkgVu2uLHR1mfAL%2BUd6iAJOofhlcjO%2FB%2FVAEwvqtQ7403Nqm6rGvy6%2FxHEiqvzvn42JADRxdGVFaw9SYyTi4QckGjG0OnG69mW2RBQdWOZ3FKmhJD6zWRPZVTbl7gJkpIdMZx0BbWKiYVsvJYgoCWNXIqqH77rigu5dsmEnWeC9J0Or1KaU%2Bzsd6QJwAzEwomhiGp3FII4wbGBnCiHLD%2FrtNgR%2BJ1H3bKgYkesdxuFvO5DzUc3eEOVBSwR0crd06J%2BJP4DolgWWNZN6ZmQ1s5aOQgSq&e=Access&y=Guest&t=&c="
+            $url3 = "&c=&c=&c=&c=&c=&c=&c="
+            $finalurl = $url1 + $odlid + $url3
+            $WebClient.DownloadFile("$finalurl","C:\Packages\cloudlabsshadow.msi")
+            Start-Process msiexec.exe -Wait '/I C:\Packages\cloudlabsshadow.msi /qn' -Verbose
+        }
+    }
+    
 function InstallAzureCli()
 {
   Write-Host "Installing Azure CLI." -ForegroundColor Green -Verbose
@@ -166,6 +183,8 @@ InstallEdgeChromium
 Uninstall-AzureRm -ea SilentlyContinue
 
 CreateLabFilesDirectory
+
+InstallCloudLabsShadow $odlId $InstallCloudLabsShadow
 
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 

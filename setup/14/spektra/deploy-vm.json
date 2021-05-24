@@ -19,10 +19,19 @@
       },
       "deploymentId": {
         "type": "string"
-      }
+      },
+      "InstallCloudLabsShadow": {
+      "type": "string",
+      "defaultValue": "yes",
+      "allowedValues": [
+        "yes",
+        "no"
+      ]
+    }
     },
+  
     "variables": {
-      "postInstallParameters": "[concat(' -azureUsername ', parameters('azureUsername'), ' -azurePassword ', parameters('azurePassword'), ' -azureTenantID ', variables('azureTenantID'), ' -azureSubscriptionID ', variables('azureSubscriptionID'), ' -odlId ', parameters('odlId'), ' -deploymentId ', parameters('deploymentId'))]",
+      "postInstallParameters": "[concat(' -azureUsername ', parameters('azureUsername'), ' -azurePassword ', parameters('azurePassword'), ' -azureTenantID ', variables('azureTenantID'), ' -azureSubscriptionID ', variables('azureSubscriptionID'), ' -odlId ', parameters('odlId'), ' -deploymentId ', parameters('deploymentId'),' -InstallCloudLabsShadow ', parameters('InstallCloudLabsShadow'))]",
       "azureSubscriptionID": "[subscription().subscriptionId]",
       "azureTenantID": "[subscription().tenantId]",
       "rgName": "[resourceGroup().name]",

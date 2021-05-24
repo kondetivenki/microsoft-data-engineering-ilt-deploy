@@ -709,7 +709,7 @@ Update-AzCosmosDBSqlContainer -ResourceGroupName $resourceGroupName `
 Write-Information "Scale down the $($sqlPoolName) SQL pool to DW200c"
 
 Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action scale -SKU DW200c
-Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
+Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online 
 
 Write-Information "Checking if PBI desktop is installed or not"
 $filetocheck= "C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe"
