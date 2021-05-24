@@ -26,6 +26,6 @@
 
    In this hands on lab you will perform the following modules:
 
- - [Module 1](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/01)  
- - [Module 6](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/06)
- - [Module 15](https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/tree/master/Instructions/Labs/15)
+ - **Module 1 - Explore compute and storage options for data engineering workloads** 
+ - **Module 6 - Data exploration and transformation in Azure Databricks**
+ - **Module 15 - Create a stream processing solution with Event Hubs and Azure Databricks**
