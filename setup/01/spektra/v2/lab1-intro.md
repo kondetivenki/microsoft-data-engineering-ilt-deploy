@@ -4,7 +4,7 @@
 
 1. In the LabVM, double click on the Azure portal shortcut on the desktop.
 
-     ![](media/azure_portal.png "Lab Environment") 
+     ![](../media/azure_portal.png "Lab Environment") 
      
 1. On **Sign in to Microsoft Azure** blade, you will see a login screen, in that enter the following email/username and then click on **Next**.  
    * **Azure Usename/Email**:  <inject key="AzureAdUserEmail"></inject>
@@ -12,7 +12,7 @@
   
 1. If you see the pop-up like below, click **Skip for now(14 days until this is required)**.
 
-   ![](media/azure_portal02.png "Lab Environment")
+   ![](../media/azure_portal02.png "Lab Environment")
 
 1. If you see the pop-up  **Stay Signed in?**, click **No**.
 
