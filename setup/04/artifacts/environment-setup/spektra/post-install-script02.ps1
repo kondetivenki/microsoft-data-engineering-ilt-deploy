@@ -127,6 +127,20 @@ function InstallAzPowerShellModuleMSI
   rm .\AzurePS.msi
 }
 
+#Create-SupporingFilesDirectory
+function CreateSupportFilesDirectory
+{
+  New-Item -ItemType directory -Path C:\Users\labuser\Desktop\LabFiles -force
+}
+
+#Create Supporing File on Desktop
+function CreateSupportFile
+{
+  $WebClient = New-Object System.Net.WebClient
+  $WebClient.DownloadFile("https://github.com/MicrosoftLearning/DP-203T00-Data-Engineering-on-Microsoft-Azure/blob/main/Instructions/Labs/07/sale-small-20100102-snappy.parquet?raw=true","C:\Users\labuser\Desktop\LabFiles\sale-small-20100102-snappy.parquet")
+  $WebClient.DownloadFile("https://solliancepublicdata.blob.core.windows.net/notebooks/Lab%202%20-%20Explore%20with%20Spark.ipynb","C:\Users\labuser\Desktop\LabFiles\Lab 2 - Explore with Spark.ipynb")
+}
+
 #Create-LabFilesDirectory
 function CreateLabFilesDirectory
 {
@@ -182,6 +196,10 @@ InstallEdgeChromium
 Uninstall-AzureRm -ea SilentlyContinue
 
 CreateLabFilesDirectory
+
+CreateSupportFilesDirectory
+
+CreateSupportFile
 
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 
